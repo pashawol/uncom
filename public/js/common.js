@@ -1,4 +1,22 @@
 "use strict";
+
+let scrollWidth;
+function getScrollWidth(scrollWidth){
+	let div = document.createElement('div');
+
+	div.style.overflowY = 'scroll';
+	div.style.width = '50px';
+	div.style.height = '50px';
+
+	document.body.append(div);
+
+	scrollWidth = div.offsetWidth - div.clientWidth;
+	let root = document.documentElement;
+	root.style.setProperty('--spacing-end', scrollWidth + 'px');
+	div.remove();
+}
+getScrollWidth(scrollWidth);
+
 const JSCCommon = {
 
 	btnToggleMenuMobile: [].slice.call(document.querySelectorAll(".toggle-menu-mobile--js")),
@@ -53,7 +71,6 @@ const JSCCommon = {
 		}
 		if (linkModal) addData();
 	},
-	// /modalCall
 	toggleMenu() {
 		const toggle = this.btnToggleMenuMobile;
 		const menu = this.menuMobile;
@@ -86,118 +103,50 @@ const JSCCommon = {
 		}, { passive: true });
 
 		window.addEventListener('resize', () => {
-			if (window.matchMedia("(min-width: 992px)").matches) this.closeMenu();
+			if (window.matchMedia("(min-width: 1200px)").matches) this.closeMenu();
 		}, { passive: true });
 	},
-	// /mobileMenu
+	tabscostume() {
+		//ultimate tabs
+		let cTabs = document.querySelectorAll('.tabs');
+		for (let tab of cTabs){
+			let Btns = tab.querySelectorAll('.tabs__btn')
+			let contentGroups = tab.querySelectorAll('.tabs__wrap');
 
-	// tabs  .
-	tabscostume(tab) {
-		// const tabs = document.querySelectorAll(tab);
-		// const indexOf = element => Array.from(element.parentNode.children).indexOf(element);
-		// tabs.forEach(element => {
-		// 	let tabs = element;
-		// 	const tabsCaption = tabs.querySelector(".tabs__caption");
-		// 	const tabsBtn = tabsCaption.querySelectorAll(".tabs__btn");
-		// 	const tabsWrap = tabs.querySelector(".tabs__wrap");
-		// 	const tabsContent = tabsWrap.querySelectorAll(".tabs__content");
-		// 	const random = Math.trunc(Math.random() * 1000);
-		// 	tabsBtn.forEach((el, index) => {
-		// 		const data = `tab-content-${random}-${index}`;
-		// 		el.dataset.tabBtn = data;
-		// 		const content = tabsContent[index];
-		// 		content.dataset.tabContent = data;
-		// 		if (!content.dataset.tabContent == data) return;
+			for (let btn of Btns){
+				btn.addEventListener('click', function (){
 
-		// 		const active = content.classList.contains('active') ? 'active' : '';
-		// 		// console.log(el.innerHTML);
-		// 		content.insertAdjacentHTML("beforebegin", `<div class="tabs__btn-accordion  btn btn-primary  mb-1 ${active}" data-tab-btn="${data}">${el.innerHTML}</div>`)
-		// 	})
+					for (let btn of Btns){
+						btn.classList.remove('active');
+					}
+					this.classList.add('active');
 
+					let index = [...Btns].indexOf(this);
+					//-console.log(index);
 
-		// 	tabs.addEventListener('click', function (element) {
-		// 		const btn = element.target.closest(`[data-tab-btn]:not(.active)`);
-		// 		if (!btn) return;
-		// 		const data = btn.dataset.tabBtn;
-		// 		const tabsAllBtn = this.querySelectorAll(`[data-tab-btn`);
-		// 		const content = this.querySelectorAll(`[data-tab-content]`);
-		// 		tabsAllBtn.forEach(element => {
-		// 			element.dataset.tabBtn == data
-		// 				? element.classList.add('active')
-		// 				: element.classList.remove('active')
-		// 		});
-		// 		content.forEach(element => {
-		// 			element.dataset.tabContent == data
-		// 				? (element.classList.add('active'), element.previousSibling.classList.add('active'))
-		// 				: element.classList.remove('active')
-		// 		});
-		// 	})
-		// })
+					for (let cGroup of contentGroups){
+						let contentItems = cGroup.querySelectorAll('.tabs__content');
 
-		$('.' + tab + '__caption').on('click', '.' + tab + '__btn:not(.active)', function (e) {
-			$(this)
-				.addClass('active').siblings().removeClass('active')
-				.closest('.' + tab).find('.' + tab + '__content').hide().removeClass('active')
-				.eq($(this).index()).fadeIn().addClass('active');
-
-		});
-
+						for (let item of contentItems){
+							item.classList.remove('active');
+						}
+						contentItems[index].classList.add('active');
+					}
+				})
+			}
+		}
 	},
-	// /tabs
-
 	inputMask() {
 		// mask for input
 		let InputTel = [].slice.call(document.querySelectorAll('input[type="tel"]'));
 		InputTel.forEach(element => element.setAttribute("pattern", "[+][0-9]{1}[(][0-9]{3}[)][0-9]{3}-[0-9]{2}-[0-9]{2}"));
 		Inputmask("+9(999)999-99-99").mask(InputTel);
 	},
-	// /inputMask
 	ifie() {
 		var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 		if (isIE11) {
 			document.body.insertAdjacentHTML("beforeend", '<div class="browsehappy">	<p class=" container">К сожалению, вы используете устаревший браузер. Пожалуйста, <a href="http://browsehappy.com/" target="_blank">обновите ваш браузер</a>, чтобы улучшить производительность, качество отображаемого материала и повысить безопасность.</p></div>');
 		}
-	},
-	sendForm() {
-		var gets = (function () {
-			var a = window.location.search;
-			var b = new Object();
-			var c;
-			a = a.substring(1).split("&");
-			for (var i = 0; i < a.length; i++) {
-				c = a[i].split("=");
-				b[c[0]] = c[1];
-			}
-			return b;
-		})();
-		// form
-		$(document).on('submit', "form", function (e) {
-			e.preventDefault();
-			const th = $(this);
-			var data = th.serialize();
-			th.find('.utm_source').val(decodeURIComponent(gets['utm_source'] || ''));
-			th.find('.utm_term').val(decodeURIComponent(gets['utm_term'] || ''));
-			th.find('.utm_medium').val(decodeURIComponent(gets['utm_medium'] || ''));
-			th.find('.utm_campaign').val(decodeURIComponent(gets['utm_campaign'] || ''));
-			$.ajax({
-				url: 'action.php',
-				type: 'POST',
-				data: data,
-			}).done(function (data) {
-
-				Fancybox.close();
-				Fancybox.show([{ src: "#modal-thanks", type: "inline" }]);
-				// window.location.replace("/thanks.html");
-				setTimeout(function () {
-					// Done Functions
-					th.trigger("reset");
-					// $.magnificPopup.close();
-					// ym(53383120, 'reachGoal', 'zakaz');
-					// yaCounter55828534.reachGoal('zakaz');
-				}, 4000);
-			}).fail(function () { });
-
-		});
 	},
 	heightwindow() {
 		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -212,59 +161,39 @@ const JSCCommon = {
 			document.documentElement.style.setProperty('--vh', `${vh}px`);
 		}, { passive: true });
 	},
-	animateScroll() {
-		$(document).on('click', " .menu li a, .scroll-link", function () {
-			const elementClick = $(this).attr("href");
-			if (!document.querySelector(elementClick)) {
-				$(this).attr("href", '/' + elementClick)
-			}
-			else {
-				let destination = $(elementClick).offset().top;
-				$('html, body').animate({ scrollTop: destination - 80 }, 0);
-				return false;
+	animateScroll(topShift=80) {
+		document.addEventListener('click', function (){
+			if (event.target.closest('.menu li a, .scroll-link')) {
+				let self = event.target.closest('.menu li a, .scroll-link');
+				event.preventDefault();
+
+				let targetSelector = self.getAttribute('href');
+				let target = document.querySelector(targetSelector);
+
+				if (!target) {
+					self.setAttribute("href", '/' + targetSelector);
+				}
+
+				let targetTop = target.offsetTop;
+				window.scrollTo({
+					top: targetTop - topShift,
+					behavior: "smooth",
+				});
 			}
 		});
 	},
-	getCurrentYear(el) {
-		let now = new Date();
-		let currentYear = document.querySelector(el);
-		if (currentYear) currentYear.innerText = now.getFullYear();
-	},
-	toggleShow(toggle, drop) {
-
-		let catalogDrop = drop;
-		let catalogToggle = toggle;
-
-		$(document).on('click', catalogToggle, function () {
-			$(this).toggleClass('active').next().fadeToggle('fast', function () {
-				$(this).toggleClass("active")
-			});
-		})
-
-		document.addEventListener('mouseup', (event) => {
-			let container = event.target.closest(catalogDrop + ".active"); // (1)
-			let link = event.target.closest(catalogToggle); // (1)
-			if (!container || !catalogToggle) {
-				$(catalogDrop).removeClass('active').fadeOut();
-				$(catalogToggle).removeClass('active');
-			};
-		}, { passive: true });
-	}
 };
-const $ = jQuery;
+//-const $ = jQuery;
 
 function eventHandler() {
 	// JSCCommon.ifie();
 	JSCCommon.modalCall();
-	// JSCCommon.tabscostume('tabs');
-	// JSCCommon.mobileMenu();
+	JSCCommon.tabscostume('tabs');
+	JSCCommon.mobileMenu();
 	// JSCCommon.inputMask();
-	// JSCCommon.sendForm();
 	JSCCommon.heightwindow();
-	// JSCCommon.toggleShow(".catalog-block__toggle--desctop", '.catalog-block__dropdown');
 	// JSCCommon.animateScroll();
-	
-	// JSCCommon.CustomInputFile(); 
+
 	var x = window.location.host;
 	let screenName;
 	screenName = document.body.dataset.bg;
@@ -273,36 +202,12 @@ function eventHandler() {
 	}
 
 
-	function setFixedNav() {
-		let topNav = document.querySelector('.top-nav  ');
-		if (!topNav) return;
-		window.scrollY > 0
-			? topNav.classList.add('fixed')
-			: topNav.classList.remove('fixed');
-	}
-
-	function whenResize() {
-		setFixedNav();
-	}
-
-	window.addEventListener('scroll', () => {
-		setFixedNav();
-
-	}, { passive: true })
-	window.addEventListener('resize', () => {
-		whenResize();
-	}, { passive: true });
-
-	whenResize();
-
-
 	let defaultSl = {
 		spaceBetween: 0,
 		lazy: {
 			loadPrevNext: true,
 		},
 		watchOverflow: true,
-		spaceBetween: 0,
 		loop: true,
 		navigation: {
 			nextEl: '.swiper-button-next',
@@ -327,9 +232,251 @@ function eventHandler() {
 		touchRatio: 0.2,
 		slideToClickedSlide: true,
 		freeModeMomentum: true,
+	});
+
+	//luckyOne Js
+	let headerH;
+	let header = document.querySelector(".header--js");
+	function calcHeaderHeight() {
+		document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+		headerH = header.offsetHeight;
+
+		if (!header) return;
+		window.scrollY > 0
+			? header.classList.add('fixed')
+			: header.classList.remove('fixed');
+	}
+	window.addEventListener('resize', calcHeaderHeight, { passive: true });
+	window.addEventListener('scroll', calcHeaderHeight, { passive: true });
+	calcHeaderHeight();
+
+	//
+	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
+		//-spaceBetween: 210,
+		spaceBetween: 230,
+		loop: true,
+		effect: "coverflow",
+		//grabCursor: true,
+		//-centeredSlides: true,
+
+		slidesPerView: "auto",
+		coverflowEffect: {
+			rotate: 0,
+			stretch: 0,
+			depth: 200,
+			modifier: 1,
+			//slideShadows: true,
+		},
+		pagination: {
+			el: ".swiper-pagination",
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
 
 	});
-	// modal window
+	//.sNew-slider-js
+	let sNewSlider = new Swiper('.sNew-slider-js', {
+		slidesPerView: 'auto',
+		loop: true,
+
+		breakpoints: {
+			0: {
+				spaceBetween: 16,
+			},
+			576: {
+				spaceBetween: 20,
+			},
+			1200: {
+				spaceBetween: 30,
+			},
+		},
+
+		navigation: {
+			nextEl: '.sNew--js .swiper-button-next',
+			prevEl: '.sNew--js .swiper-button-prev',
+		},
+	});
+
+	//-
+	let sProdGroupSlider = new Swiper('.sProdGroup-slider-js', {
+		spaceBetween: 0,
+		breakpoints: {
+			0: {
+				slidesPerView: 2,
+			},
+			576: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 3,
+			},
+		},
+
+		slidesPerView: 3,
+		grid: {
+			rows: 2,
+		},
+	});
+
+	//-
+	let inpMasks = document.querySelectorAll('.number-mask-js');
+	for (let inp of inpMasks){
+		Inputmask(inp.getAttribute('data-mask')).mask(inp);
+	}
+
+	//-
+	let sPrintSlider = new Swiper('.sPrint-slider-js', {
+		watchOverflow: true,
+		slidesPerView: 'auto',
+		//loop: true,
+
+		breakpoints: {
+			0: {
+				spaceBetween: 16,
+			},
+			576: {
+				spaceBetween: 20,
+			},
+			1200: {
+				spaceBetween: 32,
+			},
+		},
+
+		navigation: {
+			nextEl: '.sPrint--js .swiper-button-next',
+			prevEl: '.sPrint--js .swiper-button-prev',
+		},
+	});
+	//
+	let sNewsSlider = new Swiper('.sNews-slider-js', {
+		watchOverflow: true,
+		slidesPerView: 'auto',
+
+		breakpoints: {
+			0: {
+				spaceBetween: 36,
+			},
+			576: {
+				spaceBetween: 20,
+			},
+			1200: {
+				spaceBetween: 32,
+			},
+		},
+	});
+	//-
+	//
+	let popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+	let markWrap = document.querySelector('.mark-wrap-js');
+	let popoverMarks = [];
+	let popoverMarksClientRects = [];
+	let popovers = [];
+
+	function putPopoverMarks(){
+		for (let [index, elem] of Object.entries(popoverTriggerList)){
+			let childPos = elem.getBoundingClientRect();
+			let parentPos = markWrap.getBoundingClientRect();
+			popoverMarksClientRects.push(elem.getBoundingClientRect());
+
+			let markOffset = {
+				top: childPos.top - parentPos.top + childPos.height/2,
+				left: childPos.left - parentPos.left + childPos.width/2,
+			}
+
+			if (popoverTriggerList.length === markWrap.children.length){
+				markWrap.children[index].style.cssText = `
+					top: ${markOffset.top}px; 
+					left: ${markOffset.left}px;
+				`;
+			}
+			else{
+				let mark = document.createElement('div');
+				mark.classList.add(`map-div`, `map-div--${index}`);
+				markWrap.appendChild(mark)
+				popoverMarks.push(mark);
+
+				mark.style.cssText = `
+					top: ${markOffset.top}px; 
+					left: ${markOffset.left}px;
+				`;
+			}
+		}
+	}
+	putPopoverMarks();
+	window.addEventListener('resize', putPopoverMarks, {passive: true});
+
+	let popoverMissClick = function (){
+		if (!event.target.closest('.popover') ){
+			for (let popover of popovers){
+				popover.hide();
+			}
+
+			for (let mark of popoverMarks){
+				mark.classList.remove('active')
+			}
+			for (let tl of popoverTriggerList){
+				tl.classList.remove('active')
+			}
+		}
+	};
+
+	//
+	for(let elem of popoverTriggerList){
+		let popoverContent = [
+			{
+				city: elem.dataset.city,
+				department: elem.dataset.department,
+				tel: elem.dataset.tel,
+				link: elem.dataset.link,
+			},
+		];
+		let popoverInner = `
+		<div class="sMap__popover">
+			<div class="sMap__city">${popoverContent[0].city}</div>
+			<div class="sMap__department">${popoverContent[0].department}</div>
+			<a class="sMap__link" target="_blank" href="${popoverContent[0].link}">${popoverContent[0].tel}</a>
+		</div>`;
+
+		//-let index = [...popoverTriggerList].indexOf(elem);
+
+		let popover =  new bootstrap.Popover(elem, {
+			template: `<div class="popover" role="tooltip">
+			${popoverInner}`,
+			container: '#sMap',
+			trigger: 'manual',
+			placement: 'top',
+		});
+		popovers.push(popover);
+
+		elem.addEventListener('click', popOverElemClick);
+	}
+	function popOverElemClick(){
+		document.removeEventListener('click', popoverMissClick);
+		for (let mark of popoverMarks){
+			mark.classList.remove('active')
+		}
+		for (let tl of popoverTriggerList){
+			tl.classList.remove('active')
+		}
+
+		let index = [...popoverTriggerList].indexOf(this);
+
+		for (let popover of popovers){
+			popover.hide();
+		}
+		popovers[index].show();
+
+		popoverMarks[index].classList.add('active');
+		this.classList.add('active');
+
+		window.setTimeout(function (){
+			document.addEventListener('click', popoverMissClick);
+		}, 10);
+	}
+
+	//end luckyOne Js
 
 };
 if (document.readyState !== 'loading') {
@@ -337,11 +484,3 @@ if (document.readyState !== 'loading') {
 } else {
 	document.addEventListener('DOMContentLoaded', eventHandler);
 }
-
-// window.onload = function () {
-// 	document.body.classList.add('loaded_hiding');
-// 	window.setTimeout(function () {
-// 		document.body.classList.add('loaded');
-// 		document.body.classList.remove('loaded_hiding');
-// 	}, 500);
-// }

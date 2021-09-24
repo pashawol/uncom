@@ -21,7 +21,6 @@ global.$ = {
     tabify: require('gulp-tabify'),
     envDev: false,
     gcmq: require('postcss-sort-media-queries'),
-    gp: require('gulp-load-plugins')(),
     browserSync: require('browser-sync').create(),
     postcss: require('gulp-postcss'),
     autoprefixer: require('autoprefixer'),

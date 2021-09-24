@@ -1,0 +1,32 @@
+mixin sPrint(data)
+	// start sPrint
+	+b.SECTION.sPrint--js.section#sPrint&attributes(attributes)
+		+b.section-title
+			h2 Печатные каталоги продукции
+		+e.slider-wrap
+			.swiper.sPrint-slider-js
+				.swiper-wrapper
+					//-+sPrintSlide('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, inventore.')
+					-for(let i = 0; i < 4; i++)
+						+sPrintSlide()
+			.d-none.d-xl-block
+				+arrow()
+	// end sPrint
+
+mixin sPrintSlide(name)
+	.swiper-slide
+		+e.item
+			+e.img(href="#")
+				img(loading="lazy" src="img/@2x/sPrint-slide-1.png" alt="")
+			+e.title.text-center(href="#")=`${name || 'Каталог продукции том 1'}`
+			+e.box(href="#")
+				+e.b-row.row.d-flex.align-items-center.justify-content-center
+					.col-auto.d-block
+						+e.pdf-img
+							img(loading="lazy" src="img/svg/pdf.svg" alt="")
+					.col-auto.col-sm.d-block
+						+e.d-txt.d-block
+							| Скачать
+							|
+							span.d-none.d-sm-inline печатную версию
+						+e.d-data.d-block pdf 12 mb

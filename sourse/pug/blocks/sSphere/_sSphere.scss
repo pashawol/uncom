@@ -1,0 +1,165 @@
+// start .sSphere
+.sSphere {
+
+	--sPT: 12px;
+	--sPB: 15px;
+	--sTPB: 20px;
+	@include media-breakpoint-up(lg) {
+		--sPT: #{rem(64)};
+		--sPB: #{rem(30)};
+		--sTPB: #{rem(44)};
+	}
+
+	.section-title{
+
+	}
+	&__row{
+		--bs-gutter-x: 8px;
+		--bs-gutter-y: 8px;
+		@include media-breakpoint-up(sm){
+			--bs-gutter-x: #{rem(20)};
+			--bs-gutter-y: #{rem(20)};
+		}
+		@include media-breakpoint-up(xl){
+			--bs-gutter-x: #{rem(32)};
+			--bs-gutter-y: #{rem(32)};
+		}
+
+		& > *{
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	&__item{
+		@include mt();
+		flex-grow: 1;
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		align-items: center;
+		min-height: 80px;
+		padding: 17px 24px;
+		@include media-breakpoint-up(sm){
+			display: block;
+			min-height: rem(150);
+			padding: rem(24) rem(20);
+		}
+		@include media-breakpoint-up(xl){
+			min-height: rem(182);
+			padding: rem(30) rem(32);
+		}
+
+		//
+		background: $gray-110;
+		color: $black;
+		border-radius: rem(10);
+		text-shadow: 0 0 2.5px rgba($gray-110, 1);
+		&:hover{
+			--img-saturation: 100%;
+			background: $primary;
+			text-shadow: 0 0 2.5px rgba($primary, 1);
+			color: $white;
+		}
+
+		position: relative;
+		z-index: 1;
+	}
+
+	&__bg{
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+
+		img{
+			@include mt();
+			filter: #{'saturate(var(--img-saturation, 10%))'};
+
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	&__txt{
+		display: inline-block;
+		max-width: 220px;
+		font-weight: 600;
+
+		font-size: 16px;
+		@include media-breakpoint-up(sm){
+			font-size: rem(20);
+		}
+		line-height: 1.4;
+	}
+	//
+	&__download-item{
+		@include mt();
+		width: 100%;
+		min-height: 100%;
+		background: $primary;
+		color: $white!important;
+		&:hover{
+			background: lighten($primary, 4);
+		}
+		border-radius: 10px;
+
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		font-size: 16px;
+		line-height: 1.4;
+		padding: 12px 12px 12px 40px;
+		@include media-breakpoint-up(sm){
+			font-size: rem(24);
+			line-height: calc(29/24);
+			padding: rem(20);
+			justify-content: center;
+		}
+		@include media-breakpoint-up(xl){
+			padding: rem(32);
+		}
+
+		font-weight: 500;
+	}
+	&__d-img{
+
+
+		flex-shrink: 0;
+		width: 32px;
+		height: 32px;
+		margin-right: 16px;
+		@include media-breakpoint-up(md){
+			width: rem(40);
+			height: rem(40);
+			margin-right: 20px;
+		}
+		@include media-breakpoint-up(xl){
+			width: 64px;
+			height: 64px;
+			margin-right: 28px;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__d-txt{
+
+	}
+	&__{}
+} // end.sSphere

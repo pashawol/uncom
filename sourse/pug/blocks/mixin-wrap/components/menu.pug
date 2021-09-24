@@ -2,26 +2,41 @@
 mixin mnu()
 	-
 		var nav= { 
-			"Наши работы":"#",
-			"Цены":"#",
-			"Калькулятор":"#",
-			"Акции":"#" ,
-			"Заказать":"#",
+			"Сервисы":"#",
+			"Сотрудничество":"#",
+			"Где купить":"#",
 			}
-	ul.menu(itemscope itemtype="http://schema.org/SiteNavigationElement")
+	ul.menu
+		//-1
 		li.menu-item.menu-item-has-children
-			a(href="#" itemprop="url") О нас
+			a(href="#") О компании
 			ul.sub-menu
 				-
-					var subnav= { 
-						"Строительство загородных домов":"#",
-						"Отделка загородных домов":"#",
-						"Покраска деревянных домов":"#",
-						"Штукатурные фасады загородных домов":"#" ,
+					var subnav= {
+						"Руководство":"#",
+						"Заводы":"#",
+						"Лицензии и сертификаты":"#",
+						"Кабель без опасности":"#",
+						"Контакты":"#",
 						}
 				each sublinkPatch, sublinkName in nav
-					li.menu-item(itemprop="item" ): a(href= sublinkPatch itemprop="url")= sublinkName
+					li.menu-item: a(href=sublinkPatch)= sublinkName
+		//-2
+		li.menu-item.menu-item-has-children
+			a(href="#") Пресс-центр
+			ul.sub-menu
+				-
+					var subnav = {
+						"Новости": "#",
+						"Календарь мероприятий": "#",
+						"Каталоги": "#",
+						"Фото и видео": "#",
+						"Задать вопрос": "#",
+						"Отзывы": "#",
+					}
+				each sublinkPatch, sublinkName in subnav
+					li.menu-item: a(href=sublinkPatch)= sublinkName
 		each linkPatch, linkName in nav
-			li.menu-item(itemprop="item" ): a(href= linkPatch itemprop="url")= linkName
+			li.menu-item: a(href=linkPatch)= linkName
 
 //- menu

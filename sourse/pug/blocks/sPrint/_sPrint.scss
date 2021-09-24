@@ -1,0 +1,152 @@
+// start .sPrint
+.sPrint {
+	--sPT: 0;
+	--sPB: 0;
+	--sTPB: 32px;
+	@include media-breakpoint-up(sm){
+		--sTPB: inherit!important;
+	}
+	@include media-breakpoint-up(xl){
+		min-height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__slider-wrap{
+		@include media-breakpoint-up(xl){
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		position: relative;
+		.swiper{
+			@include media-breakpoint-up(xl){
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+
+			@include media-breakpoint-down(xl){
+				overflow: visible!important;
+			}
+		}
+		.swiper-wrapper{
+			@include media-breakpoint-up(xl){
+				flex-grow: 1;
+			}
+		}
+		.swiper-slide{
+			height: auto;
+
+			width: 184px;
+			@include media-breakpoint-up(sm){
+				width: rem(280);
+			}
+
+			display: flex;
+			flex-direction: column;
+		}
+
+		.swiper-button-hand-prev,
+		.swiper-button-hand-next{
+			@extend .swiper-gradient-ball;
+			backdrop-filter: blur(4px);
+		}
+		.swiper-button-hand-prev{
+			left: 0;
+		}
+		.swiper-button-hand-next{
+			left: 100%;
+		}
+	}
+	&__item{
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		height: 100%;
+		width: 100%;
+
+		background: rgba($primary, .1);
+		border-radius: 10px;
+
+		padding: 16px;
+		@include media-breakpoint-up(sm){
+			padding: 56px 16px 16px 16px;
+		}
+	}
+	&__img{
+		max-width: 100%;
+
+		width: 152.94px;
+		height: 216px;
+		margin: 0 auto 11px;
+		@include media-breakpoint-up(sm){
+			width: 168px;
+			height: 238px;
+			margin: 0 auto rem(30);
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img{
+			border-radius: 5px;
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+			filter: drop-shadow(0px 4px 23px rgba(0, 0, 0, 0.25));
+		}
+	}
+	&__title{
+		display: inline-block;
+		font-size: 12px;
+		color: $black!important;
+
+		margin-bottom: 18px;
+	}
+	&__box{
+		display: block;
+		background: $white;
+		border-radius: 10px;
+		padding: 12px 8px;
+		margin-top: auto;
+	}
+	&__b-row{
+		--bs-gutter-x: 12px;
+		@include media-breakpoint-up(sm){
+			--bs-gutter-x: #{rem(15)};
+		}
+	}
+	&__pdf-img{
+		width: 32px;
+		@include media-breakpoint-up(sm){
+			width: rem(40);
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	&__d-txt{
+		font-weight: 600;
+		font-size: 12px;
+		line-height: calc(14/12);
+		color: $primary;
+		margin-bottom: 3px;
+	}
+	&__d-data{
+		font-size: 12px;
+		line-height: calc(14/12);
+		color: $black;
+	}
+	&__{}
+	&__{}
+} // end.sPrint

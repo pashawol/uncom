@@ -1,9 +1,28 @@
 mixin topLine()
 	// start topLine
-	+b.SECTION.topLine.section#topLine&attributes(attributes)
+	+b.SECTION.topLine#topLine&attributes(attributes)
 		.container
-			+b.section-title.text-center
-				h2 topLine
-				
-			.row
+			+e.row.row.align-items-center
+				.col.col-xl-auto.order-first
+					+e.logo(href="/")
+						img(loading="lazy" src="img/svg/logo.svg" alt="")
+				.col-12.d-md-none
+				.col-auto.col-sm-6.col-md-auto
+					+e.btn--catalog(href="#")
+						+icon('catalog-burger')
+						span Каталог
+				.col.col-sm-6.col-md-auto
+					+e.btn--proj(href="#")
+						+icon('project-des')
+						span Проектные решения
+				.col-xl.order-last.order-xl-0
+					+e.input-wrap
+						+e.INPUT.input.form-control(type="text" placeholder="Поиск по наименованию или артикулу")
+						+e.search-btn(type="button")
+							+icon('zoom')
+				.col-auto.order-first.order-md-0
+					+e.btn--cart(href="#")
+						+icon('cart')
+						span.d-none.d-lg-inline Корзина
+						+e.c-num 12
 	// end topLine

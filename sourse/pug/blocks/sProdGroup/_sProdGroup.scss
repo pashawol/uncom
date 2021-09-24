@@ -1,0 +1,143 @@
+// start .sProdGroup
+.sProdGroup {
+	overflow: hidden;
+
+	--sPT: 11px;
+	--sPB: 15px;
+	--sTPB: 15px;
+	@include media-breakpoint-up(lg) {
+		--sPT: #{rem(30)};
+		--sPB: #{rem(32)};
+		--sTPB: #{rem(44)};
+	}
+
+	&__slider-wrap{
+		min-width: 336px;
+
+		--bs-gutter-x: 16px;
+		--bs-gutter-y: 16px;
+		@include media-breakpoint-up(sm){
+			--bs-gutter-x: #{rem(20)};
+			--bs-gutter-y: #{rem(20)};
+		}
+		@include media-breakpoint-up(xl){
+			--bs-gutter-x: #{rem(30)};
+			--bs-gutter-y: #{rem(30)};
+		}
+		@include media-breakpoint-up(xxl){
+			--bs-gutter-x: #{rem(38.54)};
+			--bs-gutter-y: #{rem(40)};
+		}
+
+		.swiper{
+			@include media-breakpoint-down(lg){
+				overflow: visible;
+			}
+		}
+		.swiper-wrapper{
+			flex-wrap: wrap!important;
+
+			margin-top: calc(var(--bs-gutter-y, 0px)*-1);
+			margin-left: calc(var(--bs-gutter-x)/-2);
+			margin-right: calc(var(--bs-gutter-x)/-2);
+			@include media-breakpoint-up(lg){
+				@include sw-row();
+			}
+		}
+		.swiper-slide{
+			@include sw-col();
+			display: flex;
+			flex-direction: column;
+
+			@include media-breakpoint-up(lg){
+				width: calc(100%/5) !important;
+			}
+		}
+	}
+	&__item{
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		flex-grow: 1;
+
+		border-radius: 4.5px;
+		@include media-breakpoint-up(sm){
+			border-radius: rem(7.5);
+		}
+
+		min-height: 176px;
+		@include media-breakpoint-up(sm){
+			min-height: rem(230);
+		}
+
+		display: flex;
+		padding: rem(16);
+		@include media-breakpoint-up(xxl){
+			padding: rem(20.5);
+		}
+
+		&--gray{
+			align-items: flex-end;
+			justify-content: flex-start;
+
+			background: $gray-100;
+			color: $black;
+			text-shadow: 0 0 2.5px rgba($gray-110, 1);
+			&:hover{
+				background: $primary;
+				color: $white;
+				text-shadow: 0 0 2.5px rgba($primary, 1);
+			}
+		}
+		&--empty{
+			//@include media-breakpoint-up(xxl){
+			//	padding: rem(30);
+			//}
+			@include mt();
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+
+			border: 1px solid $primary;
+			background-color: $body-bg;
+			color: $primary;
+			&:hover{
+				background-color: $primary;
+				color: $white;
+			}
+		}
+	}
+	&__img{
+		position: absolute;
+		z-index: -1;
+		left: 0;
+
+		top: 24px;
+		height: 61px;
+		width: 129px;
+		@include media-breakpoint-up(sm){
+			top: rem(38.7);
+			height: rem(88);
+			width: rem(186);
+		}
+		max-width: 90%;
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		img{
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	&__txt{
+
+	}
+	//-
+	&__{}
+	&__{}
+} // end.sProdGroup

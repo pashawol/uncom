@@ -3,10 +3,18 @@ extends layout/main.pug
 
 include ../blocks/sContent/_sContent.pug
 include ../blocks/sContact/_sContact.pug
+include ../blocks/sNew/_sNew.pug
+include ../blocks/sSphere/_sSphere.pug
+include ../blocks/sProdGroup/_sProdGroup.pug
+include ../blocks/sPlants/_sPlants.pug
+include ../blocks/sNews/_sNews.pug
+include ../blocks/sPrint/_sPrint.pug
+include ../blocks/sMap/_sMap.pug
 
 block variables
-	- let  mainPage= 'main-page' 
-	- let  bg= null
+	- //remove gray-header
+	- let  mainPage= 'main-page gray-header'
+	- let  bg= 'index-320.png'
 
 block title
 	- let  title= 'title'
@@ -14,14 +22,21 @@ block title
 block pagecontent
 	+mob-mnu()
 	+header()
-	+top-nav()
-	
-	+topLine()
+		+top-nav()
+		+topLine()
 	+headerBlock()
+	+sNew()
+	+sSphere()
+	+sProdGroup()
+	+sPlants()
 	+sForm()
-	+sContact()
+	+b.news-bl.section
+		.container
+			+e.row.row
+				.col-xl-4
+					+sNews()
+				.col-xl-8
+					+sPrint()
+	+sMap()
+	//+sContact()
 	+footer()
-      
-
-
-

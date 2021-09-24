@@ -1,55 +1,118 @@
 // start .headerBlock
 .headerBlock {
-	margin-bottom: 1px;
-	min-height: 100vh;
-	min-height: calc(var(--vh, 1vh) * 100);
-	// background-image: url(../img);
-	// background-color: #000000;
+	background-color: $light;
+	padding-top: calc(var(--header-h) + var(--sPT)) !important;
+	//width: 100vw;
+	overflow: hidden;
 
-	h1 {
-		margin-bottom: 1px;
+	--sPT: 0px;
+
+	margin-top: -2px;
+	--sPB: #{rem(15)};
+	--sTPB: #{rem(20)};
+	@include media-breakpoint-up(lg) {
+		margin-top: 0;
+		--sPB: #{rem(35)};
+		--sTPB: #{rem(40)};
 	}
 
-	h2 {
-		margin-bottom: 1px;
+	//-
+	&__slider-wrap{
+		.swiper{
+			overflow: visible!important;
+		}
+		.swiper-wrapper{
+
+		}
+		.swiper-slide{
+			@include mt();
+			width: 100%;
+			border-radius: 10px;
+			overflow: hidden;
+
+			&.swiper-slide-next,
+			&.swiper-slide-prev{
+				opacity: 0;
+				@include media-breakpoint-up(lg){
+					opacity: 1;
+					filter: blur(5px);
+				}
+			}
+		}
+
+		.swiper-pagination{
+			position: absolute;
+			z-index: 10;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			transform: translateY(-50%);
+		}
+
+		//
+		.swiper-button-hand-prev,
+		.swiper-button-hand-next{
+			@extend .swiper-gradient-ball;
+		}
+		.swiper-button-hand-prev{
+			left: 0;
+		}
+		.swiper-button-hand-next{
+			left: 100%;
+		}
 	}
 
-	@include media-breakpoint-up(xl) {}
+	&__item{
+		position: relative;
 
-	@include media-breakpoint-up(lg) {}
+		padding: 20px 25px 136px;
+		@include media-breakpoint-up(sm){
+			padding: rem(24) rem(32) rem(72);
+		}
+		@include media-breakpoint-up(lg){
+			padding: rem(53) rem(72) rem(66);
+		}
+	}
+	&__bg{
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 
-	@include media-breakpoint-up(md) {}
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__title{
+		font-weight: 600;
+		color: $white;
+		max-width: 340px;
 
-	@include media-breakpoint-up(sm) {}
+		font-size: 28px;
+		line-height: calc(34/28);
+		margin-bottom: 24px;
+		@include media-breakpoint-up(md){
+			font-size: rem(40);
+			line-height: calc(48/40);
+			margin-bottom: rem(36);
+		}
 
-	@include media-breakpoint-up(xs) {}
+	}
+	&__btn{
+		@extend .btn;
+		@extend .btn-outline-white;
 
+		@include media-breakpoint-down(sm){
+			padding: 4.5px 16px;
+		}
+	}
 	//
-	@include media-breakpoint-between(md, xl) {}
-
-
-	//
-	@include media-breakpoint-only(xs) {}
-
-	@include media-breakpoint-only(sm) {}
-
-	@include media-breakpoint-only(md) {}
-
-	@include media-breakpoint-only(lg) {}
-
-	@include media-breakpoint-only(xl) {}
-
-	//
-	@include media-breakpoint-down(xl) {}
-
-	@include media-breakpoint-down(lg) {}
-
-	@include media-breakpoint-down(md) {}
-
-	@include media-breakpoint-down(sm) {}
-
-	@include media-breakpoint-down(xs) {}
-
+	&__{}
+	&__{}
 }
 
 // end.headerBlock

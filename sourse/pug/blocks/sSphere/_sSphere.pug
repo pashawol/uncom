@@ -1,0 +1,35 @@
+mixin sSphere(data)
+	// start sSphere
+	+b.SECTION.sSphere.section#sSphere&attributes(attributes)
+		.container
+			+b.section-title
+				h2 Продукция по отраслям
+			+e.row.row
+				+sSphereItem(1, 'Энергетика')
+				+sSphereItem(2, 'Атомная промышленность')
+				+sSphereItem(3, 'Машиностроительная отрасль')
+				+sSphereItem(4, 'Металлургическая промышленность')
+				+sSphereItem(5, 'Нефтегазовая промышленность')
+				+sSphereItem(6, 'Горнорудная промышленность')
+				+sSphereItem(7, 'Транспортная инфраструктура')
+				+sSphereItem(8, 'Телекоммуникационная отрасль')
+				+sSphereItem(9, 'Строительство')
+				//dont touch empty col, its splitter
+				.col-12.mt-sm-0
+				+sSpherePdf('Каталоги продукции')
+				+sSpherePdf('Распродажа остатков')
+	// end sSphere
+
+mixin sSphereItem(imgNum, txt)
+	.col-sm-6.col-lg-4
+		+e.item(href="#")
+			+e.bg
+				img(loading="lazy" src=`img/@2x/sSphere-${imgNum}.png` alt='')
+			+e.txt=txt
+
+mixin sSpherePdf(txt)
+	.col-md-6
+		+e.download-item(href="#")
+			+e.d-img
+				img(loading="lazy" src="img/svg/pdf.svg" alt="")
+			+e.d-txt=txt

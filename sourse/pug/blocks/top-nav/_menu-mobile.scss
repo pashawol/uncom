@@ -1,13 +1,10 @@
-
-$h: em(2);
-
 .toggle-menu-mobile {
 	display: block;
-	height: $h* 12;
+	height: 16px;
 	position: relative;
 	color: $primary;
-	font-size: 32px;
-	width: 1em;
+	font-size: 16px;
+	width: 16px;
 	cursor: pointer;
 	
 	&.on {
@@ -26,13 +23,11 @@ $h: em(2);
 	}
 
 	span:before {
-
-
-		top: $h * 2;
+		top: 8px;
 	}
 
 	span:after {
-		bottom: $h * 2;
+		bottom: 8px;
 	}
 
 	span { 
@@ -44,7 +39,7 @@ $h: em(2);
 	span:before {
 		// width: 32px;
 		width: 1em;
-		height: $h;
+		height: 1px;
 		background-color: currentColor;
 		transition: all 0.3s;
 		backface-visibility: hidden;

@@ -2,8 +2,22 @@ mixin sForm()
 	// start sForm
 	+b.SECTION.sForm.section#sForm&attributes(attributes)
 		.container
-			+b.section-title.text-center
-				h2 sForm
-				
-			.row
+			+e.box
+				+e.img-mob.d-lg-none
+					img(loading="lazy" src="img/@2x/sForm-img-cropped.png" alt="")
+				+e.row.row.align-items-center.align-items-xxl-start
+					+e.col--title.col-lg.col-xxl-auto
+						+b.section-title
+							h2 Проверьте подлинность нашей продукции
+							p Данные по барабанам актуальны&#160;с&#160;01.01.2017 г.
+					+e.col--img.col-auto.d-none.d-lg-block
+						+e.img
+							img(loading="lazy" src="img/@2x/sForm-img-cropped.png" alt="")
+					+e.col--form.col-lg
+						+form-wrap()
+							+e.title Введите номер барабана
+							+e.input-wrap
+								+e.INPUT.input.form-control.number-mask-js(data-mask="9999999-99999-999" pattern="[0-9]{7}-[0-9]{5}-[0-9]{3}" type="text" placeholder="0000000 - 00000 - 000")
+								+e.btn(type="submit") Проверить
+							+e.info *Информация появляется в течение трех суток с даты отгрузки
 	// end sForm

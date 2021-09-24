@@ -103,7 +103,7 @@ module.exports = function () {
 			}))
 			
 			.on('error', function () { console.log('No matching images found') })
-			.pipe($.gp.rename(function (path) { path.extname = path.extname.replace('jpeg', 'jpg') }))
+			.pipe($.rename(function (path) { path.extname = path.extname.replace('jpeg', 'jpg') }))
 			// .pipe($.gp.vinylFlow())
 			.pipe($.gulp.dest(path))
 	});

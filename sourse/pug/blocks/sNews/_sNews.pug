@@ -1,0 +1,18 @@
+mixin sNews(data)
+	// start sNews
+	+b.SECTION.sNews.section#sNews&attributes(attributes)
+		+b.section-title
+			h2 Новости
+		+e.slider-wrap
+			.swiper.sNews-slider-js
+				.swiper-wrapper
+					+sNewsSlide('2 Июля 2021', 'С 28 июня по 02 июля 2021 года в городе Дубровник, Хорватия состоялось 59-е Общее собрание Международной ...')
+					+sNewsSlide('11 Июня 2021', 'С 8 по 10 июня 2021 в Москве в Экспоцентре проходила Международная выставка оборудования для производс...')
+					+sNewsSlide('10 Июня 2021', '9 июня 2021 года в Москве состоялась встреча поставщиков и потребителей электротехнической продукции...')
+		+e.all-btn(href='#') Все новости
+	// end sNews
+
+mixin sNewsSlide(date, txt)
+	.swiper-slide
+		+e.txt(href="#")=txt
+		+e.date=date

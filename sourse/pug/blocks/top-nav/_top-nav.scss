@@ -1,49 +1,145 @@
 .top-nav {
-	// background: svg-load('../svg/check.svg',  stroke=$primary); 
-	// 
-	@include media-breakpoint-up(xl) {
-		background-color: #000;
-		border: 1px solid #000;
+	padding: 16px 0;
+	@include media-breakpoint-up(xl){
+		padding: 0;
+	}
+	position: relative;
+	border-bottom: 1px solid var(--tn-col, #{$light});
+
+	&__row{
+		--bs-gutter-x: 16px;
+	}
+	&__col{
+		&--tel{
+			padding-right: calc(var(--bs-gutter-x)/2 + 6px);
+		}
+		&--loc{
+			padding-left: calc(var(--bs-gutter-x)/2 + 12px);
+			@include media-breakpoint-up(xl){
+				padding-left: calc(var(--bs-gutter-x)/2 + 0px);
+			}
+		}
+	}
+	&__loc-btn{
+		@extend .btn;
+		@extend .btn-sm;
+		@extend .btn-light;
+
+		@include media-breakpoint-down(xl){
+			padding: 7px 12px;
+		}
+
+		border: none!important;
+		background-color: var(--tn-col, #{$light}) !important;
+		color: $blue!important;
+		&:hover{
+			background-color: $blue !important;
+			color: $white!important;
+		}
+	}
+	//
+	.menu{
+		//-1lvl
+		list-style: none;
+		padding: 0;
+		margin: 0 rem(15) 0 0;
+		@include media-breakpoint-up(xxl){
+			margin: 0 rem(45) 0 0;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		& > .menu-item{
+			margin-right: rem(20);
+			@include media-breakpoint-up(xxl){
+				margin-right: rem(36.5);
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+
+			& > a{
+				display: block;
+				padding: rem(22) 0;
+
+				font-weight: 500;
+				font-size: 16px;
+				line-height: calc(19/16);
+				color: $black;
+				&:hover{
+					color: $primary;
+				}
+			}
+		}
 	}
 
-	@include media-breakpoint-up(lg) {
-		background-color: red;
+	//-
+	.sub-menu{
+		display: none;
+
+		.menu-item{
+
+		}
+		a{
+
+		}
+	}
+
+	//-
+	&__tell-row{
+		--bs-gutter-x: 32px;
+		--bs-gutter-y: #{rem(6px)};
+		font-weight: 600;
+
+		& > *:not(:last-child){
+			position: relative;
+			&:after{
+				content: '|';
+				position: absolute;
+				color: $primary;
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%) translateX(-50%);
+			}
+		}
+	}
+	&__tell{
 
 	}
-	p{
-		@include ell();
+
+	//-
+	&__btn{
+		@extend .btn;
+		padding: 4px;
+		width: 32px;
+		height: 32px;
+		border-radius: rem(150);
+
+		font-size: 12px;
+		@include media-breakpoint-up(sm){
+			font-size: rem(14);
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&--lang{
+			@extend .btn-white;
+			background-color: var(--tn-col, #{$light}) !important;
+			color: $primary;
+		}
+		&--user{
+			@extend .btn-primary;
+
+			.icon{
+				font-size: 16px;
+				color: $white;
+			}
+		}
 	}
-
-	@include media-breakpoint-up(md) {}
-
-	@include media-breakpoint-up(sm) {}
-
-	@include media-breakpoint-up(xs) {}
-
-	// 
-	@include media-breakpoint-between(md, xl) {}
-
-	// 
-	@include media-breakpoint-only(xs) {}
-
-	@include media-breakpoint-only(sm) {}
-
-	@include media-breakpoint-only(md) {}
-
-	@include media-breakpoint-only(lg) {}
-
-	@include media-breakpoint-only(xl) {}
-
-	// 
-	@include media-breakpoint-down(xl) {}
-
-	@include media-breakpoint-down(lg) {}
-
-	@include media-breakpoint-down(md) {}
-
-	@include media-breakpoint-down(sm) {}
-
-	@include media-breakpoint-down(xs) {}
+	&__{}
+	&__{}
 }
 
 

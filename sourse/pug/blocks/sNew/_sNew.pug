@@ -1,0 +1,30 @@
+mixin sNew(data)
+	// start sNew
+	+b.SECTION.sNew--js.section#sNew&attributes(attributes)
+		.container
+			+e.row.row
+				.col-md
+					+b.section-title
+						+e.row.row.align-items-baseline
+							.col-auto
+								h2 Новинки
+							.col-auto
+								+e.all(href="#") Все новинки
+				+e.arrow-col.col-md-auto.d-none.d-md-flex
+					+arrow()
+			+e.slider-wrap
+				.swiper.sNew-slider-js
+					.swiper-wrapper
+						+sNewSlide(1, `Судовой <br> кабель`)
+						+sNewSlide(2, `Кабель <br> для подводной <br> прокладки`)
+						+sNewSlide(3, `Аэродромный <br> кабель`)
+						+sNewSlide(4, `Полый <br> провод`)
+	// end sNew
+
+mixin sNewSlide(imgNum, title)
+	.swiper-slide
+		+e.card
+			+e.img
+				img(loading="lazy" src=`img/svg/sNewSlide-${imgNum}.svg` alt="")
+			+e.title(href="#")!=title
+			+e.learn-more(href="#") Узнать больше...

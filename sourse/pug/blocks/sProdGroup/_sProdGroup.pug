@@ -1,0 +1,33 @@
+mixin sProdGroup(data)
+	// start sProdGroup
+	+b.SECTION.sProdGroup.section#sProdGroup&attributes(attributes)
+		.container
+			+b.section-title
+				h2 Продукция по группам
+			+e.slider-wrap
+				.swiper-container.swiper.sProdGroup-slider-js
+					.swiper-wrapper
+						+sProdGroupItem(1, `Кабели <br> силовые`)
+						+sProdGroupItem(2, `Кабели <br> контрольные`)
+						+sProdGroupItem(3, `Провода для воздушных линий электропередачи`)
+						+sProdGroupItem(4, `Кабели и провода для горнорудных работ`)
+						+sProdGroupItem(5, `Провода связи полевые`)
+						+sProdGroupItem(6, `Кабели для промышленного интерфейса RS-485`)
+						+sProdGroupItem(7, `Кабели силовые гибкие`)
+						+sProdGroupItem(8, `Кабели <br> с минеральной изоляцией`)
+						+sProdGroupItem(9, `Кабели для систем цифровой связи (LAN)`)
+						+sProdGroupItem(10, `Кабели <br> монтажные`)
+						+sProdGroupItem(11, `Установочные <br> провода`)
+						+sProdGroupItem(12, `Кабели <br> радиочастотные`)
+						+sProdGroupItem(13, `Кабели <br> судовые`)
+						+sProdGroupItem(14, `Кабели <br> солнечные`)
+						.swiper-slide
+							+e.item--empty(href="#") Продукция по группам
+	// end sProdGroup
+
+mixin sProdGroupItem(imgNum, txt)
+	.swiper-slide
+		+e.item--gray(href="#")
+			+e.img
+				img(loading="lazy" src=`img/@2x/sProdGroup-${imgNum}.png` alt="")
+			+e.txt!=txt

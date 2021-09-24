@@ -1,28 +1,33 @@
 mixin mob-mnu()
-	-
-		//- let path = require('path');
-		//- let fs = require('fs');
-		//- var requestURL = 'top-nav.json';
-		//- var request = new XMLHttpRequest();
-		//- request.open('GET', requestURL);
-		//- request.responseType = 'json';
-		//- let dataJson = JSON.parse(json);
-	//- h1= dataJson['lala'] 
-	+b.menu-mobile--js.d-lg-none
+	+b.menu-mobile--js.d-xl-none
 		+b.toggle-menu-mobile--js
 			span
 		+e.inner
 			+mnu()
 	//  мобильное меню
+
 mixin top-nav() 
 	// start top-nav
 	+b.top-nav.block-with-lazy
 		.container
-			.row
-				.col-auto.d-lg-none
+			+e.row.row.align-items-center
+				.col-auto.d-xl-none
 					+b.toggle-menu-mobile--js
 						span
-				.col.d-none.d-lg-block
+				+e.col--loc.col.col-xl-auto
+					+e.loc-btn г. Москва
+				.col.d-none.d-xl-block
 					+mnu()
-					
+				+e.col--tel.col-auto.d-none.d-md-block
+					+e.tell-row.row.align-items-center
+						+tnTellItem('8 (800) 600-10-20', '88006001020')
+						+tnTellItem('+7 (499) 277-17-50', '+74992771750')
+				.col-auto
+					+e.btn--lang(href="#") Ru
+				.col-auto
+					+e.btn--user(href="#")
+						+icon('user')
 	// end top-nav
+mixin tnTellItem(tell, tellHref)
+	.col-auto
+		+e.tell(href=`tel:${tellHref}`)=tell

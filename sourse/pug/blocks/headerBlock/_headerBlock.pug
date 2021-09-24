@@ -2,9 +2,20 @@ mixin headerBlock()
 	// start headerBlock
 	+b.headerBlock.section#headerBlock&attributes(attributes)
 		.container
-			+b.section-title.text-center
-				h2 headerBlock ds dfsdfdsfsd
-
-			.row
-						
+			+e.slider-wrap
+				.swiper.headerBlock-slider-js
+					.swiper-wrapper
+						-for(var i = 0; i < 7; i ++)
+							+headerBlockSlide()
+					.swiper-pagination
+					.d-none.d-lg-block
+						+arrow()
 	// end headerBlock
+
+mixin headerBlockSlide()
+	.swiper-slide
+		+e.item
+			+e.bg
+				img(loading="lazy" src=`img/@2x/header-bl-slide-1.jpg` alt="")
+			+e.title Силовые кабели с&#160;изоляцией из&#160;сшитого полиэтилена 550&#160;кВ
+			+e.btn(href="#") Смотреть каталог

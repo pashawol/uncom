@@ -1,0 +1,184 @@
+// start .sPlants
+.sPlants {
+	--sPT: 10px;
+	--sPB: 15px;
+	--sTPB: 20px;
+	@include media-breakpoint-up(lg) {
+		--sPT: #{rem(32)};
+		--sPB: #{rem(40)};
+		--sTPB: #{rem(46)};
+	}
+
+	&__items-row{
+		padding-bottom: 48px;
+		--bs-gutter-x: 16px;
+		--bs-gutter-y: 16px;
+		@include media-breakpoint-up(sm){
+			padding-bottom: rem(60);
+			--bs-gutter-x: #{rem(20)};
+			--bs-gutter-y: #{rem(20)};
+		}
+		@include media-breakpoint-up(xl){
+			padding-bottom: rem(80);
+			--bs-gutter-x: #{rem(32)};
+			--bs-gutter-y: #{rem(32)};
+		}
+
+		& > *{
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	&__item{
+		min-height: 384px;
+		@include media-breakpoint-up(sm){
+			min-height: 0;
+		}
+
+		height: 100%;
+		width: 100%;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+
+		position: relative;
+		z-index: 1;
+		border-radius: 10px;
+		overflow: hidden;
+
+		padding: 18px 16px 16px 16px;
+		@include media-breakpoint-up(sm){
+			padding: rem(32) rem(24);
+		}
+		@include media-breakpoint-up(xl){
+			padding: rem(48) rem(32);
+		}
+		@include media-breakpoint-up(xxl){
+			padding: rem(59) rem(64) rem(59) rem(72);
+		}
+	}
+	&__bg{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-color: $light;
+
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(100%);
+			opacity: .1;
+		}
+	}
+	&__img{
+		width: 187px;
+		height: 51px;
+		margin-bottom: 19px;
+		@include media-breakpoint-up(sm){
+			width: rem(304);
+			height: rem(82);
+			margin-bottom: rem(21px);
+		}
+
+		display: flex;
+		align-items: center;
+
+		img{
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	&__txt{
+		width: 100%;
+
+		padding-bottom: 19px;
+		@include media-breakpoint-up(sm){
+			padding-bottom: rem(42);
+		}
+		color: $black;
+
+		& > *:last-child{
+			margin-bottom: 0;
+		}
+	}
+	&__btn{
+		margin-top: auto;
+		@extend .btn;
+		@extend .btn-primary;
+
+		padding: 4px 23px;
+		@include media-breakpoint-up(sm){
+			padding: 7px 24px;
+		}
+	}
+	//pill-row
+	&__pill-row{
+		--bs-gutter-x: 16px;
+		--bs-gutter-y: 44px;
+		@include media-breakpoint-up(sm){
+			--bs-gutter-x: #{rem(20)};
+			--bs-gutter-y: #{rem(40)};
+		}
+		@include media-breakpoint-up(xl){
+			--bs-gutter-x: #{rem(32)};
+		}
+	}
+	&__pill{
+
+	}
+	&__p-img{
+		width: 64px;
+		height: 64px;
+		margin: 0 auto 20px;
+		@include media-breakpoint-up(sm){
+			width: rem(79);
+			height: rem(79);
+			margin: 0 auto rem(16);
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img{
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	&__p-num{
+		font-weight: 500;
+		color: $primary;
+
+		font-size: 20px;
+		line-height: 1.2;
+		margin-bottom: 15px;
+		@include media-breakpoint-up(sm){
+			font-size: rem(24);
+			line-height: calc(29/24);
+			margin-bottom: rem(25);
+		}
+	}
+	&__p-txt{
+		max-width: 200px;
+		margin: 0 auto;
+
+		font-size: 12px;
+		@include media-breakpoint-up(sm){
+			font-size: rem(14);
+		}
+	}
+	&__{}
+	&__{}
+	&__{}
+	&__{}
+} // end.sPlants

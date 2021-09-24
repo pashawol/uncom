@@ -1,0 +1,72 @@
+// start .sNews
+.sNews {
+	--sPT: 0;
+	--sPB: 0;
+	--sTPB: 16px;
+	@include media-breakpoint-up(sm){
+		--sTPB: inherit!important;
+	}
+
+	&__slider-wrap{
+		padding-bottom: 19px;
+		@include media-breakpoint-up(sm){
+			padding-bottom: rem(24);
+		}
+		@include media-breakpoint-up(xl){
+			padding-bottom: rem(35);
+			max-width: 330px;
+		}
+		.swiper{
+			overflow: visible!important;
+		}
+		.swiper-wrapper{
+			--bs-gutter-y: #{rem(34)};
+			@include media-breakpoint-up(xl){
+				@include sw-row;
+			}
+		}
+		.swiper-slide{
+			width: 220px;
+			@include media-breakpoint-up(md){
+				width: calc(100%/3 - 20px*2/3);
+			}
+			@include media-breakpoint-up(xl){
+				width: 100%;
+				@include sw-col;
+			}
+		}
+	}
+	&__txt{
+		display: block;
+		margin-bottom: 18px;
+
+		@include ell();
+		--lines: 4;
+		@include media-breakpoint-up(sm){
+			--lines: 3;
+		}
+
+		color: $black;
+		&:hover{
+			color: $primary;
+		}
+	}
+	&__date{
+		font-size: 11px;
+		@include media-breakpoint-up(sm){
+			font-size: 12px;
+		}
+		line-height: 1.4;
+		color: $gray-610;
+	}
+	&__all-btn{
+		@extend .btn;
+		@extend .btn-outline-primary;
+
+		@include media-breakpoint-down(sm){
+			padding: 4.5px 27px;
+		}
+	}
+	&__{}
+	&__{}
+} // end.sNews
