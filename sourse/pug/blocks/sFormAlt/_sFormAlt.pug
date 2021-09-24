@@ -1,0 +1,25 @@
+mixin sFormAlt(data)
+	// start sFormAlt
+	+b.SECTION.sFormAlt.section#sFormAlt&attributes(attributes)
+		+e.container.container
+			+e.row.row
+				.col-md-6.col-xl-5.col-xxl-4
+					+b.section-title
+						h2 Остались вопросы?
+						p Задайте их нашим специалистам. Заполните форму и мы свяжемся с&nbsp;вами в течении 2 часов.
+						p Или позвоните по номеру:
+						+e.tel(href="tel:88006001020") 8 (800) 600-10-20
+						+e.gray Многоканальный
+						+e.policy
+							| Отправляя форму вы соглашаетесь с
+							|
+							a(href="#") условиями обработки персональных данных и политикой конфиденциальности
+				.col-md-6.col-xl-5.col-xxl-4
+					+form-wrap
+						+input('Ваше имя', 'text')
+						+input('Номер телефона', 'tel')
+						+input('Ваш вопрос (не обязательно)', 'textarea')
+						+e.btn(type="submit") Отправить
+			+e.bg.d-none.d-xl-block
+				img(loading="lazy" src="img/@2x/sFormAlt-bg.png" alt="")
+	// end sFormAlt

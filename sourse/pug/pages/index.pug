@@ -1,6 +1,5 @@
 extends layout/main.pug
 
-
 include ../blocks/sContent/_sContent.pug
 include ../blocks/sContact/_sContact.pug
 include ../blocks/sNew/_sNew.pug
@@ -10,6 +9,7 @@ include ../blocks/sPlants/_sPlants.pug
 include ../blocks/sNews/_sNews.pug
 include ../blocks/sPrint/_sPrint.pug
 include ../blocks/sMap/_sMap.pug
+include ../blocks/sFormAlt/_sFormAlt.pug
 
 block variables
 	- //remove gray-header
@@ -38,5 +38,5 @@ block pagecontent
 				.col-xl-8
 					+sPrint()
 	+sMap()
-	//+sContact()
+	+sFormAlt()
 	+footer()

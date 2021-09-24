@@ -1,17 +1,34 @@
 // start .sMap
 .sMap {
-
-	path{
-
+	--sPT: 27px;
+	--sPB: 35px;
+	--sTPB: 0px;
+	@include media-breakpoint-up(lg) {
+		--sPT: #{rem(76)};
+		--sPB: #{rem(117)};
+		--sTPB: #{rem(5)};
 	}
 
-	*[data-bs-toggle]{
-		@include mt();
-		cursor: pointer;
+	.section-title{
+		margin-bottom: -43px;
+		@include media-breakpoint-up(sm){
+			margin-bottom: 0;
+		}
+	}
 
-		&:hover, &.active{
-			fill: $danger!important;
-			fill-opacity: 1!important;
+	overflow: hidden;
+	&__slider-wrap{
+		.swiper{
+			overflow: visible!important;
+		}
+
+		//-
+		.swiper-slide{
+			width: 1170px;
+			@include media-breakpoint-up(xxl){
+				padding-left: 4px;
+				width: 1174px;
+			}
 		}
 	}
 
@@ -36,15 +53,25 @@
 			max-height: 100%;
 		}
 	}
+	*[data-bs-toggle]{
+		@include mt();
+		cursor: pointer;
+
+		&:hover, &.active{
+			fill: $danger!important;
+			fill-opacity: 1!important;
+		}
+	}
 
 	.map-div{
 		@include mt();
-		pointer-events: none;//??
+		//pointer-events: none;//??
 		width: rem(6);
 		height: rem(6);
 		transform: translateX(-50%) translateY(-50%);
 		border-radius: 50%;
 
+		background: $danger;
 		background: $danger;
 
 		position: absolute;
@@ -55,30 +82,71 @@
 		&.active{
 			opacity: 0;
 		}
+
+		&:after{
+			white-space: nowrap;
+			content: attr(data-city);
+			position: absolute;
+			z-index: 2;
+			bottom: calc(100% + 2px);
+			left: 50%;
+
+			background-color: $white;
+			font-weight: 600;
+			font-size: 9px;
+			line-height: calc(10/9);
+			padding: 3px 5px 8px 5px;
+			clip-path: polygon(100% 0, 100% 85%, 5% 85%, 0 100%, 0 0);
+		}
+
+		&[data-placement="top-end"]{
+			&:after{
+				right: 50%;
+				left: unset;
+				clip-path: polygon(100% 0, 100% 100%, 95% 85%, 0 85%, 0 0);
+			}
+		}
+		&[data-bg="blue"]{
+			&:after{
+				background-color: $primary;
+				color: $white;
+			}
+		}
 	}
 	.popover{
 		width: rem(170);
-		@include media-breakpoint-up(xxl){
-			margin-left: rem(120)!important;
-		}
-		//margin-top: -120px!important;
-
 		z-index: 100;
 		background-color: $white;
 		padding: rem(4) rem(13) rem(7) rem(13);
 		box-shadow: 0px 4px 80px rgba(147, 169, 174, 0.62);
 
-		&:after{
-			@include media-breakpoint-up(xxl){
+
+		margin-bottom: rem(8) !important;
+		&[data-popper-placement="top-end"]{
+			margin-right: 3px!important;
+			&:after{
 				content: '';
+				position: absolute;
+				top: calc(100% - 10px);
+				right: 0;
+				clip-path: polygon(100% 0, 0 0, 100% 100%);
+				width: 20px;
+				height: 20px;
+				background-color: $white;
 			}
-			position: absolute;
-			top: calc(100% - 10px);
-			left: 0;
-			clip-path: polygon(100% 0, 0 0, 0 100%);
-			width: 20px;
-			height: 20px;
-			background-color: $white;
+		}
+		&[data-popper-placement="top-start"]{
+			margin-left: 3px!important;
+			&:after{
+				content: '';
+				position: absolute;
+				top: calc(100% - 10px);
+				left: 0;
+				clip-path: polygon(100% 0, 0 0, 0 100%);
+				width: 20px;
+				height: 20px;
+				background-color: $white;
+			}
 		}
 	}
 	//-popover
@@ -97,3 +165,15 @@
 	}
 	&__{}
 } // end.sMap
+
+
+//data-city=""
+//data-department="Департамент "
+//data-tel="+7 000 000 00 00"
+//data-link="tel:+70000000000"
+//data-bs-toggle="popover"
+//data-bs-content="And here's some amazing content. It's very engaging. Right?"
+//
+//data-top-shift="1.75"
+//data-left-shift="0.6"
+//data-placement="right"

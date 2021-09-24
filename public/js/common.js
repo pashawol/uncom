@@ -380,79 +380,95 @@ function eventHandler() {
 			let parentPos = markWrap.getBoundingClientRect();
 			popoverMarksClientRects.push(elem.getBoundingClientRect());
 
+			//shift (0-2)
+			let leftShift = popoverTriggerList[index].getAttribute('data-left-shift') || 1;
+			let topShift = popoverTriggerList[index].getAttribute('data-top-shift') || 1;
+
 			let markOffset = {
-				top: childPos.top - parentPos.top + childPos.height/2,
-				left: childPos.left - parentPos.left + childPos.width/2,
+				top: childPos.top - parentPos.top + childPos.height/2 * topShift,
+				left: childPos.left - parentPos.left + childPos.width/2 * leftShift,
 			}
 
-			if (popoverTriggerList.length === markWrap.children.length){
-				markWrap.children[index].style.cssText = `
-					top: ${markOffset.top}px; 
-					left: ${markOffset.left}px;
-				`;
-			}
-			else{
+			//if triggers firs time only
+			if (popoverTriggerList.length !== markWrap.children.length){
 				let mark = document.createElement('div');
 				mark.classList.add(`map-div`, `map-div--${index}`);
+				mark.setAttribute('data-bs-toggle', "popover");
+				mark.setAttribute('data-bs-content', "And here's some amazing content. It's very engaging. Right?");
+				mark.setAttribute('data-city', popoverTriggerList[index].getAttribute('data-city'));
+				mark.setAttribute('data-placement', popoverTriggerList[index].getAttribute('data-placement'));
+				mark.setAttribute('data-bg', popoverTriggerList[index].getAttribute('data-bg'));
 				markWrap.appendChild(mark)
 				popoverMarks.push(mark);
-
-				mark.style.cssText = `
-					top: ${markOffset.top}px; 
-					left: ${markOffset.left}px;
-				`;
+				mark.addEventListener('click', popOverMarkClick);
 			}
+
+			markWrap.children[index].style.cssText = `
+				top: ${markOffset.top}px; 
+				left: ${markOffset.left}px;
+			`;
 		}
 	}
 	putPopoverMarks();
 	window.addEventListener('resize', putPopoverMarks, {passive: true});
-
 	let popoverMissClick = function (){
 		if (!event.target.closest('.popover') ){
-			for (let popover of popovers){
-				popover.hide();
-			}
-
-			for (let mark of popoverMarks){
-				mark.classList.remove('active')
-			}
-			for (let tl of popoverTriggerList){
-				tl.classList.remove('active')
-			}
+			closeAllPopOvers();
 		}
 	};
+	function closeAllPopOvers(){
+		for (let popover of popovers){
+			popover.hide();
+		}
+
+		for (let mark of popoverMarks){
+			mark.classList.remove('active')
+		}
+		for (let tl of popoverTriggerList){
+			tl.classList.remove('active')
+		}
+	}
+
 
 	//
 	for(let elem of popoverTriggerList){
-		let popoverContent = [
-			{
-				city: elem.dataset.city,
-				department: elem.dataset.department,
-				tel: elem.dataset.tel,
-				link: elem.dataset.link,
-			},
-		];
+
+		let popoverContent = {
+			city: elem.dataset.city,
+			placement: elem.dataset.placement,
+			department: elem.dataset.department,
+			tel: elem.dataset.tel,
+			link: elem.dataset.link,
+		};
+
 		let popoverInner = `
 		<div class="sMap__popover">
-			<div class="sMap__city">${popoverContent[0].city}</div>
-			<div class="sMap__department">${popoverContent[0].department}</div>
-			<a class="sMap__link" target="_blank" href="${popoverContent[0].link}">${popoverContent[0].tel}</a>
+			<div class="sMap__city">${popoverContent.city}</div>
+			<div class="sMap__department">${popoverContent.department}</div>
+			<a class="sMap__link" target="_blank" href="${popoverContent.link}">${popoverContent.tel}</a>
 		</div>`;
 
-		//-let index = [...popoverTriggerList].indexOf(elem);
+		let index = [...popoverTriggerList].indexOf(elem);
 
-		let popover =  new bootstrap.Popover(elem, {
+		//bind its placement to dot => popoverMarks[index], to el => elem
+		let popover =  new bootstrap.Popover(popoverMarks[index], {
 			template: `<div class="popover" role="tooltip">
 			${popoverInner}`,
 			container: '#sMap',
 			trigger: 'manual',
-			placement: 'top',
+			popperConfig: {
+				placement: popoverContent.placement || 'top-start',
+			},
 		});
 		popovers.push(popover);
-
 		elem.addEventListener('click', popOverElemClick);
 	}
+
+	//part of map(path) trigger click on mark
 	function popOverElemClick(){
+		popoverMarks[[...popoverTriggerList].indexOf(this)].click();
+	}
+	function popOverMarkClick(){
 		document.removeEventListener('click', popoverMissClick);
 		for (let mark of popoverMarks){
 			mark.classList.remove('active')
@@ -461,7 +477,9 @@ function eventHandler() {
 			tl.classList.remove('active')
 		}
 
-		let index = [...popoverTriggerList].indexOf(this);
+		//-[...popoverTriggerList].indexOf(this)
+		let index = [...popoverMarks].indexOf(this);
+		console.log(index);
 
 		for (let popover of popovers){
 			popover.hide();
@@ -469,15 +487,29 @@ function eventHandler() {
 		popovers[index].show();
 
 		popoverMarks[index].classList.add('active');
-		this.classList.add('active');
+		popoverTriggerList[index].classList.add('active');
 
 		window.setTimeout(function (){
 			document.addEventListener('click', popoverMissClick);
 		}, 10);
 	}
+	//-
+	let sMapSlider = new Swiper('.sMap-slider-js', {
+		slidesPerView: 'auto',
+		freeMode: true,
+		//
+		on: {
+			sliderMove: function () {
+				closeAllPopOvers();
+			},
+		},
+		// loopFillGroupWithBlank: true,
+		// touchRatio: 0.2,
+		// slideToClickedSlide: true,
+		// freeModeMomentum: true,
+	});
 
 	//end luckyOne Js
-
 };
 if (document.readyState !== 'loading') {
 	eventHandler();
