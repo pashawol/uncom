@@ -536,8 +536,6 @@ function eventHandler() {
 			this.classList.toggle('active');
 			slideToggle(this.querySelector('.sub-menu'));
 		})
-
-
 	}
 
 

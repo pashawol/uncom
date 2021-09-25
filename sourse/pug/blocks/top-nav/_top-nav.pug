@@ -32,14 +32,12 @@ mixin top-nav()
 				.col-auto
 					+e.btn--user(href="#")
 						+icon('user')
-		+e.baner.tn-baner-js
-			.container
-				.row
-					+e.b-col.col-auto.ms-auto
-						+e.b-txt Ункомтех — крупнейший поставщик кабельно-проводниковой продукции в России и СНГ
-						+e.b-row.row
-							+bLogo(1)
-							+bLogo(2)
+		+e.b-cont.container
+			+e.baner.tn-baner-js
+				+e.b-txt Ункомтех — крупнейший поставщик кабельно-проводниковой продукции в России и СНГ
+				+e.b-row.row
+					+bLogo(1)
+					+bLogo(2)
 	// end top-nav
 
 mixin bLogo(imgNum)
