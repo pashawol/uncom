@@ -1,11 +1,29 @@
 // start .header
 .header {
-	position: absolute;
+	position: fixed;
 	z-index: 100;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: auto;
+
+	background-color: $white;
+	--tn-bb: #{$gray-100};
+	--tn-btn-col: #{$light};
+	&.gray{
+		background-color: $gray-100;
+		--tn-bb: #{$white};
+		--tn-btn-col: #{$white};
+	}
+
+
+	&.fixed{
+		background-color: $white;
+		box-shadow: 0 0 12px 0 rgba($black, .25);
+		--tn-col: #{$white};
+		--tn-bb: #{$gray-300};
+		--tn-btn-col: #{$light};
+	}
 
 	&__{}
 	&__{}

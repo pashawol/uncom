@@ -252,12 +252,9 @@ function eventHandler() {
 
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
-		//-spaceBetween: 210,
 		spaceBetween: 230,
 		loop: true,
 		effect: "coverflow",
-		//grabCursor: true,
-		//-centeredSlides: true,
 
 		slidesPerView: "auto",
 		coverflowEffect: {
@@ -503,11 +500,47 @@ function eventHandler() {
 				closeAllPopOvers();
 			},
 		},
-		// loopFillGroupWithBlank: true,
-		// touchRatio: 0.2,
-		// slideToClickedSlide: true,
-		// freeModeMomentum: true,
 	});
+	let currYears = document.querySelectorAll('.curr-year-js')
+	for(let year of currYears){
+		year.innerHTML = new Date().getFullYear();
+	}
+	//-
+	let locBtn = document.querySelector('.loc-btn-js');
+	let locDd = document.querySelector('.tn-loc-dd--js');
+	locBtn.addEventListener('click', function (){
+		locDd.classList.toggle('active');
+		document.body.classList.add('fixed2');
+	});
+	document.addEventListener('click', function (){
+		if (!event.target.closest('.tn-box-js') && !event.target.closest('.loc-btn-js')){
+			locDd.classList.remove('active');
+			document.body.classList.remove('fixed2');
+		}
+	});
+	//-
+	let baner = document.querySelector('.tn-baner-js');
+	let subMenuItems = document.querySelectorAll('.top-nav--js .menu-item-has-children');
+	for (let item of subMenuItems){
+		item.addEventListener('mouseenter', function (){
+			baner.classList.add('active');
+		})
+		item.addEventListener('mouseleave', function (){
+			baner.classList.remove('active');
+		})
+	}
+	//-
+	let mobSubMenuItems = document.querySelectorAll('.menu-mobile--js .menu-item-has-children');
+	for(let item of mobSubMenuItems){
+		item.addEventListener('click', function (){
+			this.classList.toggle('active');
+			slideToggle(this.querySelector('.sub-menu'));
+		})
+
+
+	}
+
+
 
 	//end luckyOne Js
 };

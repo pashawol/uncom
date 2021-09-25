@@ -3,19 +3,24 @@ mixin mob-mnu()
 		+b.toggle-menu-mobile--js
 			span
 		+e.inner
+			+e.logo(href='/')
+				img(loading="lazy" src="img/svg/logo.svg" alt="")
 			+mnu()
+			+e.tell(href="#") 8 (800) 600-10-20
+			+e.tell(href="#") +7 (499) 277-17-50
 	//  мобильное меню
 
 mixin top-nav() 
 	// start top-nav
-	+b.top-nav.block-with-lazy
+	+b.top-nav--js.block-with-lazy&attributes(attributes)
 		.container
 			+e.row.row.align-items-center
 				.col-auto.d-xl-none
 					+b.toggle-menu-mobile--js
 						span
 				+e.col--loc.col.col-xl-auto
-					+e.loc-btn г. Москва
+					+e.loc-btn.loc-btn-js г. Москва
+					+topNavLocDD()
 				.col.d-none.d-xl-block
 					+mnu()
 				+e.col--tel.col-auto.d-none.d-md-block
@@ -27,7 +32,49 @@ mixin top-nav()
 				.col-auto
 					+e.btn--user(href="#")
 						+icon('user')
+		+e.baner.tn-baner-js
+			.container
+				.row
+					+e.b-col.col-auto.ms-auto
+						+e.b-txt Ункомтех — крупнейший поставщик кабельно-проводниковой продукции в России и СНГ
+						+e.b-row.row
+							+bLogo(1)
+							+bLogo(2)
 	// end top-nav
+
+mixin bLogo(imgNum)
+	.col-auto
+		+e.b-logo
+			img(loading="lazy" src=`img/@2x/b-logo-${imgNum}.png` alt="")
+
+
 mixin tnTellItem(tell, tellHref)
 	.col-auto
 		+e.tell(href=`tel:${tellHref}`)=tell
+
+mixin topNavLocDD()
+	+b.tn-loc-dd--js
+		+e.box.tn-box-js
+			+e.container.container
+				.row
+					.col-xl-8
+						+input('Выберите регион', 'text')
+						+e.links
+							a(href="#") Алматы
+							a(href="#") Екатеринбург
+							a(href="#") Иркутск
+							a(href="#") Казань
+							a(href="#") Москва
+							a(href="#") Киров
+							a(href="#") Краснодар
+							a(href="#") Красноярск
+							a(href="#") Минск
+							a(href="#") Нижний-Новгород
+							a(href="#") Новосибирск
+							a(href="#") Пятигорск
+							a(href="#") Ростов-на-Дону
+							a(href="#") Самара
+							a(href="#") Санкт-Петербург
+							a(href="#") Уфа
+							a(href="#") Хабаровск
+							a(href="#") Челябинск

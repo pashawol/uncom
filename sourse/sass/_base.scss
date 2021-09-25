@@ -1,6 +1,6 @@
 .pixel-perfect {
 	top: 0;
-	top: 91px;
+	//top: 175px;
 	display: block;
 	@include a-cent(x);
 	pointer-events: none;
@@ -10,7 +10,7 @@
 	height: 100%;
 	background-position: center 0;
 	opacity: 0;
- 	opacity: 0.7;
+ 	//opacity: 0.7;
 } 
 
 body,
@@ -25,11 +25,12 @@ html{
 
 body {
 	&.fixed,
+	&.fixed2,
 	&.fancybox-active{
 		.header{ 
 			padding-right: var(--spacing-end);
 		}
-		margin-right: var(--spacing-end);
+		max-width: calc(100% - var(--spacing-end));
 	}
 	// min-width: 575px; 
 	-webkit-font-smoothing: antialiased;
@@ -88,10 +89,19 @@ body {
 			opacity: 0.76;
 		}
 	}
+	&.fixed2 {
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		z-index: 999;
+	}
 }
 
 .main-wrapper {
 	position: relative;
+	padding-top: var(--header-h);
 	//width: 100%;
 	//overflow: hidden;
 
@@ -112,7 +122,7 @@ body {
 	padding-bottom: var(--sTPB);
 
 	& > *:last-child{
-		margin-bottom: 0;
+		margin-bottom: 0!important;
 	}
 
 	h2{

@@ -2,8 +2,66 @@ mixin footer()
 	+b.FOOTER.footer
 		+e.container.container
 			+e.row.row
-				.col
-				.col
-				.col
-				.col-auto
+				+e.col--logo.col-sm-6.col-lg-3
+					+e.logo-row.row.align-items-center
+						.col-auto.col-sm-12
+							+e.logo--main(href="/")
+								img(loading="lazy" src="img/svg/logo-gray.svg" alt="")
+						.col-auto.col-sm-12
+							+e.logo--alt
+								img(loading="lazy" src="img/@2x/logo2.png" alt="")
+				+e.col--menu.col-6.col-sm
+					+footerMenu({
+						title: 'ПРЕСС-ЦЕНТР',
+						menuItems: [
+							'Новости',
+							'Календарь мероприятий',
+							'Каталоги',
+							'Фото и видео',
+							'Задать вопрос',
+							'Отзывы',
+						],
+					})
+				+e.col--menu.col-6.col-sm
+					+footerMenu({
+						title: 'СЕРВИСЫ',
+						menuItems: [
+							'Подбор кабеля',
+							'Для проектировщика',
+							'Высоковльтные кабели',
+							'Проверка подлинности',
+						],
+					})
+				+e.col--menu.col-12.col-sm
+					+footerMenu({
+						title: 'СОТРУДНИЧЕСТВО',
+						menuItems: [
+							'Поставщики',
+							'Клиенты',
+							'Партнеры',
+						],
+					})
+				+e.col--tells.col-sm-6.col-lg-3.text-sm-end
+					+e.tells
+						a(href="tel:88006001020") 8 (800) 600-10-20
+						a(href="tel:+74992771750") +7 (499) 277-17-50
+					+e.mail(href="mailto:sales@uncomtech.com") sales@uncomtech.com
 		.container
+			+e.bot-row.row.align-items-center
+				.col-md
+					+e.all-rights
+						|©
+						|
+						span.curr-year-js 2020
+						|. Uncomtech
+				.col-md-auto
+					+e.policy(href="#") Политика конфиденциальности
+				.col-md-auto
+					+e.policy(href="#") Условия пользовательского соглашения
+
+mixin footerMenu(data)
+	+e.menu-title(href="#")=data.title
+	+e.menu
+		ul
+			-for(let item of data.menuItems)
+				li: a(href='#')=item

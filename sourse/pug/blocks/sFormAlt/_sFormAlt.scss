@@ -3,8 +3,8 @@
 	background: $gray-100;
 
 	--sPT: 26px;
-	--sPB: 23px;
-	--sTPB: 17px;
+	--sPB: 12px;
+	--sTPB: 14px;
 	@include media-breakpoint-up(md){
 		--sPT: #{rem(60)};
 		--sPB: #{rem(40)};
@@ -12,7 +12,7 @@
 	}
 	@include media-breakpoint-up(lg){
 		--sPT: #{rem(112)};
-		--sPB: #{rem(40)};
+		--sPB: #{rem(45)};
 		--sTPB: #{rem(24)};
 	}
 
@@ -31,11 +31,12 @@
 			--bs-gutter-x: #{rem(30)};
 		}
 	}
-	.section-title{
+	&__txt-content{
 		@include media-breakpoint-up(xxl){
 			max-width: 302px;
 		}
-
+	}
+	.section-title{
 		h2{
 			@include media-breakpoint-down(sm){
 				font-size: 20px;
@@ -52,6 +53,7 @@
 			margin-bottom: 16px;
 			@include media-breakpoint-up(sm){
 				max-width: 100%;
+				font-size: 16px;
 				margin-bottom: rem(24);
 			}
 
@@ -62,50 +64,49 @@
 				}
 			}
 		}
+	}
+	&__tel{
+		display: block;
+		font-weight: 500;
+		margin-bottom: 10px;
 
-		&__tel{
-			display: block;
-			font-weight: 500;
+		font-size: 24px;
+		line-height: calc(38/32);
+		@include media-breakpoint-up(sm){
 			font-size: rem(32);
-			line-height: calc(38/32);
-			color: $blue;
-			margin-bottom: rem(5);
-
-			@include media-breakpoint-up(xxl){
-				//margin-top: -5px;
-				&:not(:first-child){
-					margin-top: -7px;
-				}
-			}
+			line-height: 0.8;
 		}
-		&__gray{
-			color: $gray-610;
-			margin-bottom: rem(42.5);
+	}
+	&__gray{
+		color: $gray-610;
+		margin-bottom: rem(42.5);
+	}
+	&__policy{
+		font-size: 11px;
+		@include media-breakpoint-up(sm){
+			font-size: 12px;
 		}
-		&__policy{
-			font-size: 11px;
-			@include media-breakpoint-up(sm){
-				font-size: 12px;
-			}
-			line-height: 1.4;
-			color: $gray-610;
-		}
+		line-height: 1.4;
+		color: $gray-610;
 	}
 
 	.form-wrap{
 		&__input-wrap{
-			margin-bottom: rem(16);
+			margin-bottom: 8px;
+			@include media-breakpoint-up(sm){
+				margin-bottom: rem(16);
+			}
 		}
 		textarea{
 			height: 96px;
-			@include media-breakpoint-up(xxl){
-				height: 144px;
+			@include media-breakpoint-up(sm){
+				height: rem(144);
 			}
 
 			resize: none;
 		}
 		&__input{
-			padding: 11px 15px;
+			padding: 10px 15px;
 			font-size: 12px;
 			line-height: 1.5;
 			@include media-breakpoint-up(sm){
@@ -131,7 +132,7 @@
 	&__bg{
 		position: absolute;
 		z-index: -1;
-		top: -10px;
+		top: 9px;
 
 		right: 0;
 		@include media-breakpoint-up(xxl){
