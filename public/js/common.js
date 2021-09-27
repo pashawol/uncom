@@ -249,6 +249,9 @@ function eventHandler() {
 	window.addEventListener('resize', calcHeaderHeight, { passive: true });
 	window.addEventListener('scroll', calcHeaderHeight, { passive: true });
 	calcHeaderHeight();
+	window.setTimeout(function(){
+		calcHeaderHeight();
+	}, 10)
 
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
