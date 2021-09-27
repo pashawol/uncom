@@ -22,7 +22,30 @@ mixin top-nav()
 					+e.loc-btn.loc-btn-js г. Москва
 					+topNavLocDD()
 				.col.d-none.d-xl-block
-					+mnu()
+					//-+mnu()
+					ul.menu
+						li.menu-item.menu-item-has-children
+							a(href="#") О компании
+							ul.sub-menu
+								+tnBaner()
+								li.menu-item: a(href="#") Руководство
+								li.menu-item: a(href="#") Заводы
+								li.menu-item: a(href="#") Лицензии и сертификаты
+								li.menu-item: a(href="#") Кабель без опасности
+								li.menu-item: a(href="#") Контакты
+						li.menu-item.menu-item-has-children
+							a(href="#") Пресс-центр
+							ul.sub-menu
+								+tnBaner()
+								li.menu-item: a(href="#") Новости
+								li.menu-item: a(href="#") Календарь мероприятий
+								li.menu-item: a(href="#") Каталоги
+								li.menu-item: a(href="#") Фото и видео
+								li.menu-item: a(href="#") Задать вопрос
+								li.menu-item: a(href="#") Отзывы
+						li.menu-item: a(href="#") Сервисы
+						li.menu-item: a(href="#") Сотрудничество
+						li.menu-item: a(href="#") Где купить
 				+e.col--tel.col-auto.d-none.d-md-block
 					+e.tell-row.row.align-items-center
 						+tnTellItem('8 (800) 600-10-20', '88006001020')
@@ -32,13 +55,17 @@ mixin top-nav()
 				.col-auto
 					+e.btn--user(href="#")
 						+icon('user')
-		+e.b-cont.container
-			+e.baner.tn-baner-js
-				+e.b-txt Ункомтех — крупнейший поставщик кабельно-проводниковой продукции в России и СНГ
-				+e.b-row.row
-					+bLogo(1)
-					+bLogo(2)
+		//-+tnBaner()
+
 	// end top-nav
+
+mixin tnBaner()
+	//-+e.b-cont.container
+	+e.baner.tn-baner-js
+		+e.b-txt Ункомтех — крупнейший поставщик кабельно-проводниковой продукции в России и СНГ
+		+e.b-row.row
+			+bLogo(1)
+			+bLogo(2)
 
 mixin bLogo(imgNum)
 	.col-auto

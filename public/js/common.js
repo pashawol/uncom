@@ -519,16 +519,19 @@ function eventHandler() {
 		}
 	});
 	//-
-	let baner = document.querySelector('.tn-baner-js');
-	let subMenuItems = document.querySelectorAll('.top-nav--js .menu-item-has-children');
-	for (let item of subMenuItems){
-		item.addEventListener('mouseenter', function (){
-			baner.classList.add('active');
-		})
-		item.addEventListener('mouseleave', function (){
-			baner.classList.remove('active');
-		})
-	}
+	// let subMenuItems = document.querySelectorAll('.top-nav--js .menu-item-has-children');
+	// for (let item of subMenuItems){
+	// 	let baner = this.querySelector('.tn-baner-js');
+	//
+	// 	item.addEventListener('mouseenter', function (){
+	// 		item.classList.add('active');
+	// 		//-baner.classList.add('active');
+	// 	})
+	// 	item.addEventListener('mouseleave', function (){
+	// 		item.classList.remove('active');
+	// 		//baner.classList.remove('active');
+	// 	});
+	// }
 	//-
 	let mobSubMenuItems = document.querySelectorAll('.menu-mobile--js .menu-item-has-children');
 	for(let item of mobSubMenuItems){
