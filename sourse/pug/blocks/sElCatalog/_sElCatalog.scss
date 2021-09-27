@@ -1,0 +1,25 @@
+// start .sElCatalog
+.sElCatalog {
+	// --sPT: ;
+	// --sPB: ;
+	--sTPB: 14px;
+	--sPB:16px;
+	@include media-breakpoint-up(lg) {
+		--sTPB: #{rem(60)};
+		--sPB:#{rem(22)};
+	}
+	.row{
+		@include media-breakpoint-up(lg){
+			--bs-gutter-x:#{rem(32)};
+		}
+	}
+	h4 {
+		padding-bottom: 31px;
+		margin-bottom: 0;
+		@include media-breakpoint-up(lg) {
+			padding-bottom: rem(39);
+		}
+	}
+	
+
+} // end.sElCatalog

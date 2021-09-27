@@ -1,0 +1,28 @@
+extends layout/main.pug
+
+
+include ../blocks/sFormAlt/_sFormAlt.pug
+include ../blocks/sElCatalog/_sElCatalog.pug
+
+block variables
+	- //remove gray-header
+	- let  mainPage= 'main-page'
+	- let  bg= '02-el-catalog.jpg'
+
+block title
+	- let  title= 'Электронный каталог'
+	title= title
+block pagecontent
+	+mob-mnu()
+	+header()(class="gray")
+		+top-nav()
+	+topLine()(class="bg-light")
+	//- +b.head-page
+	//- 	+e.breadcrumb-wrap
+	//- 		.container
+	//- 			+breadcrumb('Главная',title)
+	//- 	.container
+	//- 		h1=title
+	+sElCatalog()
+	+sFormAlt()
+	+footer()

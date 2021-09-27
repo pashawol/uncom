@@ -1,0 +1,43 @@
+mixin sElCatalog(data)
+	// start sElCatalog
+	+b.sElCatalog.section#sElCatalog&attributes(attributes)
+		.container
+			.row
+				+e.col.col-12.col-lg-6
+					h4 Продукция по отраслям
+					+sElCatalogItem(1, 'Энергетика')
+					+sElCatalogItem(2, 'Атомная промышленность')
+					+sElCatalogItem(3, 'Машиностроительная отрасль')
+					+sElCatalogItem(4, 'Металлургическая промышленность')
+					+sElCatalogItem(5, 'Нефтегазовая промышленность')
+					+sElCatalogItem(6, 'Горнорудная промышленность')
+					+sElCatalogItem(7, 'Транспортная инфраструктура')
+					+sElCatalogItem(8, 'Телекоммуникационная отрасль')
+					+sElCatalogItem(9, 'Строительство')
+				+e.col.col-12.col-lg-6
+					h4 Продукция по группам
+					+sElCatalogItem2(5,'Кабели силовые')
+					+sElCatalogItem2(4,'Кабели контрольные')
+					+sElCatalogItem2(3,'Провода для воздушных линий электропередачи')
+					+sElCatalogItem2(2,'Кабели и провода для горнорудных работ')
+					+sElCatalogItem2(1,'Провода связи полевые')
+					+sElCatalogItem2(10,'Кабели для промышленного интерфейса RS-485')
+					+sElCatalogItem2(9,'Кабели силовые гибкие')
+					+sElCatalogItem2(8,'Кабели с минеральной изоляцией')
+					+sElCatalogItem2(7,'Кабели для систем цифровой связи (LAN)')
+					+sElCatalogItem2(6,'Кабели монтажные')
+					+sElCatalogItem2(14,'Установочные провода')
+					+sElCatalogItem2(13,'Кабели радиочастотные')
+					+sElCatalogItem2(12,'Кабели судовые')
+					+sElCatalogItem2(11,'Кабели солнечные')
+					
+	// end sElCatalog
+mixin sElCatalogItem(imgNum, txt)
+	+e.item(href="#")
+		+pic(`sSphere-${imgNum}.png`,'',0)
+		+e.txt=txt
+
+mixin sElCatalogItem2(imgNum, txt)
+	+e.item(href="#")
+		+pic(`sProdGroup-${imgNum}.png`,'',0)
+		+e.txt=txt

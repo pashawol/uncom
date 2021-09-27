@@ -1,5 +1,5 @@
 .pixel-perfect {
-	top: 0;
+	top: -124px;
 	//top: 175px;
 	display: block;
 	@include a-cent(x);
@@ -10,7 +10,7 @@
 	height: 100%;
 	background-position: center 0;
 	opacity: 0;
- 	//opacity: 0.7;
+	// opacity: 0.7;
 } 
 
 body,

@@ -23,8 +23,7 @@ mixin sSphere(data)
 mixin sSphereItem(imgNum, txt)
 	.col-sm-6.col-lg-4
 		+e.item(href="#")
-			+e.bg
-				img(loading="lazy" src=`img/@2x/sSphere-${imgNum}.png` alt='')
+			img(loading="lazy" src=`img/@2x/sSphere-${imgNum}.png` alt='')
 			+e.txt=txt
 
 mixin sSpherePdf(txt)
