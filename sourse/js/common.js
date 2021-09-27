@@ -256,6 +256,7 @@ function eventHandler() {
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
 		loop: true,
+		centeredSlides: true,
 
 		slidesPerView: "auto",
 		breakpoints: {
