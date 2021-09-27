@@ -235,7 +235,7 @@ function eventHandler() {
 	});
 
 	//luckyOne Js
-	let headerH;
+	let headerH = 64;
 	let header = document.querySelector(".header--js");
 	function calcHeaderHeight() {
 		document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
@@ -249,21 +249,33 @@ function eventHandler() {
 	window.addEventListener('resize', calcHeaderHeight, { passive: true });
 	window.addEventListener('scroll', calcHeaderHeight, { passive: true });
 	calcHeaderHeight();
+	window.setTimeout(function(){
+		calcHeaderHeight();
+	}, 10)
 
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
-		spaceBetween: 230,
 		loop: true,
-		effect: "coverflow",
+		centeredSlides: true,
 
 		slidesPerView: "auto",
-		coverflowEffect: {
-			rotate: 0,
-			stretch: 0,
-			depth: 200,
-			modifier: 1,
-			//slideShadows: true,
+		breakpoints: {
+			0: {
+				spaceBetween: 30,
+			},
+			1200: {
+				spaceBetween: 230,
+				effect: "coverflow",
+				coverflowEffect: {
+					rotate: 0,
+					stretch: 0,
+					depth: 200,
+					modifier: 1,
+					//slideShadows: true,
+				},
+			},
 		},
+
 		pagination: {
 			el: ".swiper-pagination",
 		},
@@ -519,16 +531,19 @@ function eventHandler() {
 		}
 	});
 	//-
-	let baner = document.querySelector('.tn-baner-js');
-	let subMenuItems = document.querySelectorAll('.top-nav--js .menu-item-has-children');
-	for (let item of subMenuItems){
-		item.addEventListener('mouseenter', function (){
-			baner.classList.add('active');
-		})
-		item.addEventListener('mouseleave', function (){
-			baner.classList.remove('active');
-		})
-	}
+	// let subMenuItems = document.querySelectorAll('.top-nav--js .menu-item-has-children');
+	// for (let item of subMenuItems){
+	// 	let baner = this.querySelector('.tn-baner-js');
+	//
+	// 	item.addEventListener('mouseenter', function (){
+	// 		item.classList.add('active');
+	// 		//-baner.classList.add('active');
+	// 	})
+	// 	item.addEventListener('mouseleave', function (){
+	// 		item.classList.remove('active');
+	// 		//baner.classList.remove('active');
+	// 	});
+	// }
 	//-
 	let mobSubMenuItems = document.querySelectorAll('.menu-mobile--js .menu-item-has-children');
 	for(let item of mobSubMenuItems){
