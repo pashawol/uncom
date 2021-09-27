@@ -235,7 +235,7 @@ function eventHandler() {
 	});
 
 	//luckyOne Js
-	let headerH;
+	let headerH = 64;
 	let header = document.querySelector(".header--js");
 	function calcHeaderHeight() {
 		document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
@@ -255,18 +255,26 @@ function eventHandler() {
 
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
-		spaceBetween: 230,
 		loop: true,
-		effect: "coverflow",
 
 		slidesPerView: "auto",
-		coverflowEffect: {
-			rotate: 0,
-			stretch: 0,
-			depth: 200,
-			modifier: 1,
-			//slideShadows: true,
+		breakpoints: {
+			0: {
+				spaceBetween: 30,
+			},
+			1200: {
+				spaceBetween: 230,
+				effect: "coverflow",
+				coverflowEffect: {
+					rotate: 0,
+					stretch: 0,
+					depth: 200,
+					modifier: 1,
+					//slideShadows: true,
+				},
+			},
 		},
+
 		pagination: {
 			el: ".swiper-pagination",
 		},
