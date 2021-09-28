@@ -17,10 +17,10 @@
 	}
 
 	//-
+	.swiper{
+		overflow: visible;
+	}
 	&__slider-wrap{
-		.swiper{
-			overflow: visible!important;
-		}
 		.swiper-wrapper{
 
 		}

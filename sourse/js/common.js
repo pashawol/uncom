@@ -238,41 +238,40 @@ function eventHandler() {
 	let headerH = 64;
 	let header = document.querySelector(".header--js");
 	function calcHeaderHeight() {
-		document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
-		headerH = header.offsetHeight;
-
+	// 	document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+	// 	window.setTimeout(function(){
+	// 	document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+	// }, 100)
+	// 	headerH = header.offsetHeight;
+	// 	console.log(header.offsetHeight);
 		if (!header) return;
 		window.scrollY > 0
 			? header.classList.add('fixed')
 			: header.classList.remove('fixed');
 	}
 	window.addEventListener('resize', calcHeaderHeight, { passive: true });
-	window.addEventListener('scroll', calcHeaderHeight, { passive: true });
-	calcHeaderHeight();
-	window.setTimeout(function(){
+	// window.addEventListener('scroll', calcHeaderHeight, { passive: true });
+	// calcHeaderHeight();
 		calcHeaderHeight();
-	}, 10)
 
 	//
 	let headerBlSlider = new Swiper('.headerBlock-slider-js', {
 		loop: true,
 		centeredSlides: true,
+		spaceBetween: 0,
 
 		slidesPerView: "auto",
+		effect: "coverflow",
+		coverflowEffect: {
+			rotate: 0,
+			stretch: -220,
+			depth: 200,
+			modifier: 1,
+			//slideShadows: true,
+		},
 		breakpoints: {
-			0: {
-				spaceBetween: 30,
-			},
 			1200: {
-				spaceBetween: 230,
-				effect: "coverflow",
-				coverflowEffect: {
-					rotate: 0,
-					stretch: 0,
-					depth: 200,
-					modifier: 1,
-					//slideShadows: true,
-				},
+				// spaceBetween: 230,
 			},
 		},
 

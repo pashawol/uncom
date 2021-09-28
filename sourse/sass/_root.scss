@@ -9,12 +9,13 @@
     --sPB: #{rem(40)};
     --sTPB: #{rem(44)};
   }
-
-
+  
   --bs-body-font-size: 14px;
   @include media-breakpoint-up(md){
     --bs-body-font-size: 15px;
+    --header-h: #{rem(66px)};
   }
+  --header-h: 65px;
 	@include media-breakpoint-up(xl){
 		--bs-body-font-size: #{$em-base};
 	}

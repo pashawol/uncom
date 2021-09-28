@@ -1,9 +1,20 @@
+:root {
+	--fancybox-content-bg: none;
+}
+
+.fancybox__content {
+	padding: 0;
+	max-width: 100%;
+}
+
 .modal-win {
 	// display: block;
-	width: 100%;
+	background-color: #fff;
+	max-width: 100%;
 	position: relative;
-	max-width: rem(500);
+	width: rem(1500);
 	// min-height: 100%; 
+	padding: 40px;
 
 	.modal-content {
 		// max-width: 485px;
@@ -130,9 +141,7 @@ a {
 
 	.fancybox__container {
 		width: 100% !important;
-		min-height: 100%; 
+		min-height: 100%;
 		transform: none !important;
 	}
 }
-
-
