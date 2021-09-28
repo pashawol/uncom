@@ -590,11 +590,11 @@ iframe {
 		font-size: 24px;
 		line-height: 140%;
 		font-weight: 500;
-		padding-top: rem(16);
 		padding-top: 8px;
 		@include media-breakpoint-up(sm) {
 			font-size: rem(32);
 			line-height: rem(38);
+			padding-top: rem(16);
 		}
 	}
 }

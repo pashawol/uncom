@@ -1,0 +1,20 @@
+mixin sCables(btn,title,caption,img,ltitle,...items)
+	// start sCables
+	+b.SECTION.sCables.section#sCables&attributes(attributes)
+		.container
+			+e.wrap
+				+e.btns-wrap
+					+e.btn--branch(href="#" class=(btn == 1 ? "active" : '')) Отрасль
+					+e.btn--group(href="#" class=(btn == 2 ? "active" : '')) Группа
+				+input(title,'select')
+			+e.caption
+				h1!=title
+				+e.text!=caption
+				+e.more(href="#") Узнать больше
+				+e.bg-pic
+					+pic(`sCables-${img}.png`,'',0)
+			+e.list
+				+e.list-title!=ltitle
+				each item in items
+					+e.list-item(href="#")!=item
+	// end sCables
