@@ -8,7 +8,7 @@ $output-bourbon-deprecation-warnings: false;
 @import "bourbon/app/assets/stylesheets/bourbon";
 // @import "../../node_modules/rfs/scss";
 // @import "./node_modules/@fancyapps/ui/src/Fancybox/Fancybox.scss";
-// @import "./node_modules/swiper/swiper.scss";
+@import "./node_modules/swiper/swiper.scss";
 
 @import "mixin";
 @import "fonts";
@@ -70,6 +70,7 @@ $output-bourbon-deprecation-warnings: false;
 
 
 // .breadcrumb {
+//   flex-wrap: nowrap;
 // 	.active {
 // 		a {
 // 			// color: $breadcrumb-active-color;

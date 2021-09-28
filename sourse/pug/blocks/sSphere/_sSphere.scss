@@ -178,6 +178,11 @@
 			@include media-breakpoint-down(sm){
 				margin-top: 16px;
 			}
+			.sElCatalog__txt{
+				@include media-breakpoint-down(sm){
+					font-size: 14px;
+				}
+			}
 			.sElCatalog__item {
 				--img-saturation: 100% !important;
 				@include media-breakpoint-up(lg){
