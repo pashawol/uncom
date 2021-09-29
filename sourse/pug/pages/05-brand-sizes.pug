@@ -1,0 +1,26 @@
+extends layout/main.pug
+
+
+include ../blocks/sFormAlt/_sFormAlt.pug
+include ../blocks/sBrandSizes/_sBrandSizes.pug
+
+block variables
+	- //remove gray-header
+	- let  mainPage= 'el-catalog'
+	- let  bg= '05-brand-sizes.jpg'
+
+block title
+	- let  title= 'МКЭШ'
+	title= title
+block pagecontent
+	+mob-mnu()
+	+header()(class="gray")
+		+top-nav()
+	+topLine()(class="bg-light")
+	+b.head-page
+		+e.breadcrumb-wrap
+			.container
+				+breadcrumb('Главная','Каталог продукции',title)
+	+sBrandSizes(title)
+	+sFormAlt()
+	+footer()

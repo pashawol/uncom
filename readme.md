@@ -4,3 +4,4 @@
 2. <https://pashawol.github.io/uncom/public/02-el-catalog.html>
 3. <https://pashawol.github.io/uncom/public/03-cables-branch.html>
 4. <https://pashawol.github.io/uncom/public/04-cables-group.html>
+5. <https://pashawol.github.io/uncom/public/05-brand-sizes.html>

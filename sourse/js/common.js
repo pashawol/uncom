@@ -135,6 +135,7 @@ const JSCCommon = {
 				})
 			}
 		}
+		
 	},
 	inputMask() {
 		// mask for input
@@ -359,6 +360,12 @@ function eventHandler() {
 	});
 	//
 	var breadcrumbSlider = new Swiper(".breadcrumb-slider--js", {
+		slidesPerView: 'auto',
+	});
+	var iconsSlider = new Swiper(".sBrandSizes__icons-wrap--js", {
+		slidesPerView: 'auto',
+	});
+	var tabsSlider = new Swiper(".tabs-slider--js", {
 		slidesPerView: 'auto',
 	});
 	let sNewsSlider = new Swiper('.sNews-slider-js', {

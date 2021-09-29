@@ -1,0 +1,82 @@
+mixin sBrandSizes(title)
+	// start sBrandSizes
+	+b.SECTION.sBrandSizes.section#sBrandSizes&attributes(attributes)
+		.container
+			.row
+				+e.col.col-md-auto.col-12
+					+e.bg-wrap
+						h1!=title
+						+pic('sBrandSizes.png','',0)
+				+e.col.col-md-auto.col-12
+					+e.icons-wrap--js.swiper
+						.swiper-wrapper
+							- for (var x=1;x<9;x++)
+								.swiper-slide
+									img(src=`/img/svg/brand-sizes-${x}.svg`, alt="")
+					+e.caption Кабель монтажный, с токопроводящими жилами из медных проволок, изоляцией из поливинилхлоридного пластиката, с наружной оболочкой из поливинилхлоридного пластиката,&nbsp;на&nbsp;номинальное напряжение 660&nbsp;В
+					+e.conditions-title Произведено по тех.условиям:
+					+e.conditions ТУ 16.К19-24-2013, ТУ 16.К19-24-2013
+					+e.pdf
+						img(src="/img/svg/pdf.svg", alt="")
+						+e.pdf-link
+							a(href="#") МКЭШ Печатный каталог
+							p pdf 12 mb
+					.tabs.swiper
+						.tabs__slider.swiper-container.tabs-slider--js
+							.tabs__caption.swiper-wrapper
+								.tabs__btn.swiper-slide.active Маркоразмеры
+								.tabs__btn.swiper-slide Конструкция и описание
+								.tabs__btn.swiper-slide Сертификаты
+							.tabs__wrap
+								.tabs__content.active
+									.tabs__search-wrap
+										+e.input-wrap
+											+e.INPUT.input-search.form-control(type="text" placeholder="Поиск")
+											+e.search-btn(type="button")
+												+icon('zoom')
+										+e.select-wrap
+											+e.select
+												+e.select-label Сечение
+												select
+													option(style="display:none" selected) Выбрать
+													option test
+													option test
+													option test
+													option test
+													option test
+											+e.select
+												+e.select-label Напряжение
+												select
+													option(style="display:none" selected) Выбрать
+													option test
+													option test
+													option test
+													option test
+													option test
+									mixin item(t)
+										.tabs__size-item
+											.row
+												.title-wrap.col-lg-auto.col-12
+													.title!=t
+													.caption VBВ560D00005000
+												.price.col-lg-auto.col-12
+													.title Цена
+													.caption По запросу
+												.count.col-lg-auto.col-6
+													.counter
+														button.counter__btn.counter__btn--minus(type="button")
+														input(value="12")
+														button.counter__btn.counter__btn--plus(type="button")
+														.counter__unit км
+												.order-btn.col-lg-auto.col-6
+													.btn.btn-primary Заказать
+									+item('МКЭШ 2*0,35')
+									+item('МКЭШ 2*0,50')
+									+item('МКЭШ 2*0,75')
+									+item('МКЭШ 2*0,35')
+									+item('МКЭШ 2*0,50')
+									+item('МКЭШ 2*0,75')
+									+e.show-more.btn.btn-outline-primary(href="#") Показать еще 4
+								.tabs__content
+								.tabs__content
+	// end sBrandSizes
